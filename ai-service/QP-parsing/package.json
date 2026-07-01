@@ -1,0 +1,18 @@
+{
+  "name": "qp-parsing",
+  "version": "1.0.0",
+  "description": "To provide question paper parsing functionality so that image/document can be converted into a json file",
+  "license": "ISC",
+  "author": "Aaditya Pokhriyal",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./src/index.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "nodemon": "^3.1.14"
+  }
+}
