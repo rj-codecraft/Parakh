@@ -31,6 +31,8 @@ Follow ALL rules strictly. Return VALID JSON ONLY. Do not wrap the JSON in markd
 - id: Human-readable hierarchy (e.g., Q1, Q1.a, Q1.a.i, Q2.b, Q5.c.ii).
 - rubric: Always return an array `[]`.
 - text: Text contains the languages defined by the response schema (currently en and hi). Never paraphrase, correct grammar, or normalize wording. Preserve spelling mistakes exactly as printed. If text does not exist do not make your own text instead return empty string.
+- options : This is an optional field which is added if the question is MCQ type. options will have an array of objects where each object will have optionId(e.g., "A", "B", "i", "ii" etc) and text. (for e.g., "options":[{"optionId":"i","text":"javascript"},{"optionId":"ii","text":"C"},{"optionId":"iii","text":"java"},{"optionId":"iv","text":"typescript"}]).
+  CRITICAL NOTE: If a question is an MCQ type, do not treat the options as sub-questions. Do NOT add them to the children array. Place them strictly inside this options field.
 - choiceInformation: Handles child-level choices. Contains `detailedDescription` and a formulaic `summary`.
 - globalChoices: Array of objects for macro-level choices between independent questions; contains `targetNodes` (IDs involved), `detailedDescription` (clear logic), and `summary` (a short standardized summary), or `[]` if no global choices exist.
   

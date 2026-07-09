@@ -4,7 +4,6 @@ import fs from 'fs/promises';
 import dotenv from 'dotenv';
 import os from 'os';
 import path from 'path';
-import { json } from 'stream/consumers';
 
 dotenv.config();
 
@@ -12,7 +11,7 @@ const ai = new GoogleGenAI({
     apiKey: process.env.GEMINI_API_KEY
 });
 
-const promptText = await fs.readFile('prompts/third.txt', 'utf-8');
+const promptText = await fs.readFile('prompts/fifth.txt', 'utf-8');
 
 export default async function parseQuestionPaper(req, res, next) {
     //filePart object used for uploading file.
@@ -89,12 +88,19 @@ export default async function parseQuestionPaper(req, res, next) {
             });
         }
 
+
+    //  ### Response generation ###
+
+
         console.log("Generating response...");
 
+        const primaryModel="gemini-2.5-flash";
+        const fallbackModel="gemini-2.5-flash";
+        let forceFallback=false;
         const maxRetries = 5;
-
+        const responseTimeLimit=90000; //in milliseconds
         for (let attempt = 1; attempt <= maxRetries; attempt++) {
-            const model_name = attempt > 3 ? 'gemini-2.5-flash' : 'gemini-2.5-flash';
+            const model_name = (attempt > 3 || forceFallback) ? fallbackModel : primaryModel;
             try {
                 const response = await ai.models.generateContent({
                     model: model_name,
@@ -103,7 +109,9 @@ export default async function parseQuestionPaper(req, res, next) {
                         // Force the API to output strict JSON matching your layout and cachedContent stores the repeated prompt in each request.
                         responseMimeType: 'application/json',
                         responseSchema: finalPaperSchema, //schema
-                        temperature: 0.1
+                        temperature: 0.1,
+                        thinking_level:"low",
+                        // httpOptions:{ timeout: responseTimeLimit } //response time limit.
                     },
                 });
                 // The text returned is guaranteed to be a 100% syntactically valid JSON string
@@ -136,6 +144,23 @@ export default async function parseQuestionPaper(req, res, next) {
                 // }       
             }
             catch (err) {
+                // const isTimeout = err.name === "TimeoutError" ||
+                //                   err.name === "AbortError" ||
+                //                   err.code === "ETIMEDOUT" ||
+                //                   err.code === 20 || // Handles DOMException internal abort code
+                //                   err.message?.toLowerCase().includes("timeout") ||
+                //                   err.message?.toLowerCase().includes("aborted") ||
+                //                   err.message?.includes("DEADLINE_EXCEEDED") ||
+                //                   err.message?.includes("DEADLINE");
+                // if(!forceFallback && model_name===primaryModel && isTimeout){
+                //     console.warn(`[Timeout] Primary model took over ${responseTimeLimit/60000} mins. Switching to ${fallbackModel}...`);
+                //     forceFallback=true; // This sets the flag to true and fallbackModel will be used.
+
+                //     // Linear small backoff for timeouts so it doesn't slam the next model
+                //     await new Promise(resolve => setTimeout(resolve, 1000));
+
+                //     continue;
+                // }
                 const status = err.status ?? err.code ?? 500;
                 if ((status === 503 || status === 429) && attempt < maxRetries) {
                     const delay = Math.pow(2, attempt) * 1000;
@@ -151,13 +176,21 @@ export default async function parseQuestionPaper(req, res, next) {
     catch (err) {
         console.error(err);
         const errStatus = err.status ?? err.code ?? 500;
+        // If the error was a timeout/abort, explicitly set code to standard HTTP 408
+        if (err.name === "AbortError" || errStatus === 20 || err.message?.toLowerCase().includes("abort")) {
+            errStatus = 408;
+        }
+        // Guarantee Express will accept the code (must be between 100 and 999)
+        if (typeof errStatus !== 'number' || errStatus < 100 || errStatus > 999) {
+            errStatus = 500; 
+        }
         return res.status(errStatus).json({
             success: false,
             message: err.message
         });
     }
     finally {
-        // --- HOUSEKEEPING & SYSTEM SANITIZATION ---
+        // --- HOUSEKEEPING & SYSTEM SANITIZATION / Cleanup of stored files in tempDir and cloud file storage ---
         // A. Erase local server instances from storage disk
         for (const localPath of tempFilePaths) {
             await fs.unlink(localPath).catch(e => console.error("Disk purge mismatch:", e));

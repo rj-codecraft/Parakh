@@ -21,6 +21,23 @@ const level3QuestionSchema = {
                 hi: { type: Type.STRING },
             },
         },
+        options: {
+            type: Type.ARRAY,
+            items: {
+                    type:Type.OBJECT,
+                    properties: {
+                        optionId:{type: Type.STRING},
+                        text:{
+                            type: Type.OBJECT,
+                            properties:{
+                                en:{type: Type.STRING},
+                                hi:{type: Type.STRING},
+                            }
+                        }
+                    },
+                    required:["optionId","text"]
+            }
+        },
         marks: { type: Type.STRING },
         attachments: { 
             type: Type.ARRAY, 
@@ -49,6 +66,23 @@ const level2QuestionSchema = {
                 en: { type: Type.STRING },
                 hi: { type: Type.STRING },
             },
+        },
+        options: {
+            type: Type.ARRAY,
+            items: {
+                    type:Type.OBJECT,
+                    properties: {
+                        optionId:{type: Type.STRING},
+                        text:{
+                            type: Type.OBJECT,
+                            properties:{
+                                en:{type: Type.STRING},
+                                hi:{type: Type.STRING},
+                            }
+                        }
+                    },
+                    required:["optionId","text"]
+            }
         },
         marks: { type: Type.STRING },
         attachments: { 
@@ -82,6 +116,23 @@ const level1QuestionSchema = {
                 en: { type: Type.STRING },
                 hi: { type: Type.STRING },
             },
+        },
+        options: {
+            type: Type.ARRAY,
+            items: {
+                    type:Type.OBJECT,
+                    properties: {
+                        optionId:{type: Type.STRING},
+                        text:{
+                            type: Type.OBJECT,
+                            properties:{
+                                en:{type: Type.STRING},
+                                hi:{type: Type.STRING},
+                            }
+                        }
+                    },
+                    required:["optionId","text"]
+            }
         },
         marks: { type: Type.STRING },
         attachments: {

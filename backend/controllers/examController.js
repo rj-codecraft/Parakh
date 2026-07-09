@@ -1,5 +1,4 @@
 const aiService = require("../services/aiService");
-
 /**
  * Handles POST /api/exams/upload-paper
  *
@@ -10,29 +9,11 @@ const aiService = require("../services/aiService");
  */
 const uploadPaper = async (req, res, next) => {
   try {
-    if (!req.file) {
-      return res.status(400).json({
-        success: false,
-        error: "No PDF file uploaded. Please attach a PDF file.",
-      });
-    }
-
-    if (req.file.mimetype !== "application/pdf") {
-      return res.status(400).json({
-        success: false,
-        error: "Invalid file type. Only PDF files are accepted.",
-      });
-    }
-
-    const pdfBuffer = req.file.buffer;
-    const originalFilename = req.file.originalname;
-
     let parsedData;
     try {
-      parsedData = await aiService.parseQuestionPaper(
-        pdfBuffer,
-        originalFilename
-      );
+      
+      parsedData = await aiService.parseQuestionPaper(req.files);
+
     } catch (aiError) {
       const errorMessage =
         aiError.response?.data?.error ||
@@ -43,17 +24,17 @@ const uploadPaper = async (req, res, next) => {
       throw error;
     }
 
-    const examService = require("../services/examService");
-    const result = await examService.storeExamPaper(
-      parsedData,
-      originalFilename
-    );
+    // const examService = require("../services/examService");
+    // const result = await examService.storeExamPaper(
+    //   parsedData,
+    //   originalFilename
+    // );
 
     return res.status(201).json({
       success: true,
       message: "Question paper uploaded and parsed successfully.",
-      examPaperId: result.id,
-      createdAt: result.created_at,
+      // examPaperId: result.id,
+      // createdAt: result.created_at,
       questionPaper: parsedData,
     });
   } catch (error) {

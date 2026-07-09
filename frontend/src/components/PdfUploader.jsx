@@ -2,8 +2,7 @@ import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function PdfUploader() {
-  const navigate = useNavigate();
-  const [file, setFile] = useState(null);
+  const [files, setFiles] = useState([]);
   const [dragActive, setDragActive] = useState(false);
   const [uploadStatus, setUploadStatus] = useState("idle"); // idle | uploading | success | error
   const [errorMessage, setErrorMessage] = useState("");
@@ -28,31 +27,63 @@ export default function PdfUploader() {
     e.stopPropagation();
     setDragActive(false);
 
-    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-      validateAndSetFile(e.dataTransfer.files[0]);
+    if (e.dataTransfer.files) {
+      validateAndSetFile(e.dataTransfer.files);
     }
   };
 
   // Handle file input selection
   const handleFileChange = (e) => {
-    if (e.target.files && e.target.files[0]) {
-      validateAndSetFile(e.target.files[0]);
+    if (e.target.files) {
+      validateAndSetFile(e.target.files);
     }
   };
 
-  // Validate that the file is indeed a PDF
-  const validateAndSetFile = (selectedFile) => {
-    if (selectedFile.type !== "application/pdf" && !selectedFile.name.endsWith(".pdf")) {
-      setErrorMessage("Invalid file type. Please select a PDF file.");
-      setUploadStatus("error");
-      setFile(null);
-      return;
-    }
-
-    setFile(selectedFile);
+  // Helper function to clear previous error/response data on fresh successful validation
+  const resetStatus = () => {
     setUploadStatus("idle");
     setErrorMessage("");
     setResponseData(null);
+  };
+
+  // Validates that the files contain a single pdf or a group of images only.
+  const validateAndSetFile = (fileList) => {
+    const selectedFiles = Array.from(fileList);
+
+    if (selectedFiles.length === 0) return;
+
+    const firstFile = selectedFiles[0];
+
+    if (firstFile.type === "application/pdf" || firstFile.name.endsWith(".pdf")) {
+        if (selectedFiles.length > 1) {
+          setErrorMessage("Invalid input. Please select only one PDF or multiple images.");
+          setUploadStatus("error");
+          setFiles([]);
+          return;
+        }
+        setFiles([firstFile]);
+        resetStatus();
+    }
+    else if (firstFile.type.startsWith("image/")) {
+      // Check if EVERY single file in the array is an image
+      const allAreImages = selectedFiles.every(file => file.type.startsWith("image/"));
+
+      if (!allAreImages) {
+        setErrorMessage("Invalid input! All dropped items must be images.");
+        setUploadStatus("error");
+        setFiles([]);
+        return;
+      }
+
+      // Valid array of images (works perfectly for 1 image or 100 images)
+      setFiles(selectedFiles);
+      resetStatus();
+    }
+    else {
+      setErrorMessage("Invalid input! Please select one PDF or a group of images only.");
+      setUploadStatus("error");
+      setFiles([]);
+    }
   };
 
   // Format file size
@@ -69,16 +100,19 @@ export default function PdfUploader() {
     fileInputRef.current.click();
   };
 
-  // Send the PDF to the backend
+  // Send the PDF/Images to the backend
   const uploadPdfFile = async (e) => {
     e.preventDefault();
-    if (!file) return;
+    if (files.length === 0) return;
 
     setUploadStatus("uploading");
     setErrorMessage("");
 
     const formData = new FormData();
-    formData.append("file", file);
+
+    files.forEach(file => {
+      formData.append("files", file);
+    });
 
     try {
       console.log(`Sending POST request to: ${backendUrl}`);
@@ -89,12 +123,8 @@ export default function PdfUploader() {
         // The browser will automatically set it to multipart/form-data with the correct boundary.
       });
 
-      // Log raw response object to console
       console.log("Raw Fetch Response Object:", response);
-
       const data = await response.json();
-      
-      // Log parsed response data to console
       console.log("Parsed Response JSON Data:", data);
 
      if (response.ok && data.success) {
@@ -117,7 +147,7 @@ export default function PdfUploader() {
 
   // Reset the state to upload a new file
   const handleReset = () => {
-    setFile(null);
+    setFiles([]);
     setUploadStatus("idle");
     setErrorMessage("");
     setResponseData(null);
@@ -126,23 +156,31 @@ export default function PdfUploader() {
     }
   };
 
+  // Compute summary for display card
+  const isPdf = files.length === 1 && files[0].type === "application/pdf";
+  const totalSize = files.reduce((acc, current) => acc + current.size, 0);
+  const displayTitle = isPdf 
+    ? files[0].name 
+    : `${files.length} Image${files.length > 1 ? "s" : ""} selected`;
+
   return (
     <div style={styles.container}>
       <div style={styles.card}>
         <h2 style={styles.title}>Upload Question Paper</h2>
-        <p style={styles.subtitle}>Upload your exam PDF for automated AI parsing</p>
+        <p style={styles.subtitle}>Upload your exam PDF or images for automated AI parsing</p>
 
         <form onSubmit={uploadPdfFile} style={styles.form}>
           <input
             ref={fileInputRef}
             type="file"
-            accept=".pdf,application/pdf"
+            accept=".pdf,application/pdf,image/*"
             onChange={handleFileChange}
             style={styles.hiddenInput}
+            multiple
           />
 
           {/* Drag & Drop Area */}
-          {!file && (
+          {files.length === 0 && (
             <div
               style={{
                 ...styles.dropZone,
@@ -156,7 +194,6 @@ export default function PdfUploader() {
               onClick={onButtonClick}
             >
               <div style={styles.iconContainer}>
-                {/* PDF SVG Icon */}
                 <svg
                   width="48"
                   height="48"
@@ -175,29 +212,35 @@ export default function PdfUploader() {
                 </svg>
               </div>
               <p style={styles.dropText}>
-                Drag & drop your PDF file here, or <span style={styles.browseText}>browse</span>
+                Drag & drop your PDF or Images here, or <span style={styles.browseText}>browse</span>
               </p>
               <p style={styles.limitText}>Maximum size: 20 MB</p>
             </div>
           )}
 
-          {/* Selected File Details */}
-          {file && (
+          {/* Selected File(s) Details */}
+          {files.length > 0 && (
             <div style={styles.fileDetailsCard}>
               <div style={styles.fileDetailsRow}>
-                <div style={styles.pdfBadge}>
-                  <span style={styles.pdfBadgeText}>PDF</span>
+                <div style={{
+                  ...styles.pdfBadge, 
+                  backgroundColor: isPdf ? "rgba(239, 68, 68, 0.1)" : "rgba(59, 130, 246, 0.1)",
+                  borderColor: isPdf ? "rgba(239, 68, 68, 0.2)" : "rgba(59, 130, 246, 0.2)"
+                }}>
+                  <span style={{...styles.pdfBadgeText, color: isPdf ? "#ef4444" : "#3b82f6"}}>
+                    {isPdf ? "PDF" : "IMG"}
+                  </span>
                 </div>
                 <div style={styles.fileMeta}>
-                  <p style={styles.fileName}>{file.name}</p>
-                  <p style={styles.fileSize}>{formatFileSize(file.size)}</p>
+                  <p style={styles.fileName}>{displayTitle}</p>
+                  <p style={styles.fileSize}>{formatFileSize(totalSize)}</p>
                 </div>
                 {uploadStatus !== "uploading" && (
                   <button
                     type="button"
                     onClick={handleReset}
                     style={styles.removeButton}
-                    title="Remove file"
+                    title="Remove selection"
                   >
                     <svg
                       width="18"
@@ -278,7 +321,7 @@ export default function PdfUploader() {
 
           {/* Action Buttons */}
           <div style={styles.actionRow}>
-            {file && uploadStatus !== "success" && (
+            {files.length > 0 && uploadStatus !== "success" && (
               <button
                 type="submit"
                 disabled={uploadStatus === "uploading"}
@@ -301,7 +344,7 @@ export default function PdfUploader() {
                   backgroundColor: "var(--accent)",
                 }}
               >
-                Upload Another PDF
+                Upload Another File
               </button>
             )}
           </div>
@@ -405,15 +448,14 @@ const styles = {
   pdfBadge: {
     padding: "6px 10px",
     borderRadius: "6px",
-    backgroundColor: "rgba(239, 68, 68, 0.1)",
-    border: "1px solid rgba(239, 68, 68, 0.2)",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     flexShrink: 0,
+    borderWidth: "1px",
+    borderStyle: "solid"
   },
   pdfBadgeText: {
-    color: "#ef4444",
     fontWeight: "bold",
     fontSize: "12px",
     letterSpacing: "0.5px",

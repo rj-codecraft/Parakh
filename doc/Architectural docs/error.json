@@ -1,0 +1,24 @@
+{
+    "paperMetadata": {
+        "duration": "",
+        "examType": "",
+        "instructions": {
+            "en": [],
+            "hi": []
+        },
+        "subject": "",
+        "title": "",
+        "totalMarks": 0
+    },
+    "parsingStatus": {
+        "confidence": 0,
+        "errors": [
+            "The provided image is a photograph of flowers and does not contain a question paper."
+        ],
+        "paperClarity": "unclear",
+        "success": false,
+        "warnings": []
+    },
+    "questions": [],
+    "globalChoices": []
+}
