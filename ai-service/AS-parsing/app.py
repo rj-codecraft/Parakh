@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 app = FastAPI()
 
 client = genai.Client(api_key = os.getenv("GEMINI_API_KEY"))
-logger.info("cliend loaded")
+logger.info("client loaded")
 
 @app.get('/')
 def status():
@@ -42,7 +42,7 @@ async def evaluate(answer_pdf: UploadFile, question_json: UploadFile):
             status_code= 400,
             detail="Question paper must be submitted as json file"
         )
-    logger.info("question json format is okay")
+    logger.info("question json format okay")
     
     # validate pdf
     if not is_valid_pdf(answer_pdf.file):
@@ -64,7 +64,7 @@ async def evaluate(answer_pdf: UploadFile, question_json: UploadFile):
         file = question_json.file,
         config = dict(mime_type='application/json')
     )
-    logger.info("question json uploaed")
+    logger.info("question json uploaded")
 
     # make request to model
     interaction = client.interactions.create(
