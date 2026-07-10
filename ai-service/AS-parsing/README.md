@@ -126,15 +126,20 @@ Send a `multipart/form-data` request containing:
 ### Response
 
 Returns a JSON object containing the AI-generated evaluation of the submitted answer sheet.
+ 
+More detailed documentations [here](#answer-sheet-json-response-schema)
 
 ---
 
 # Testing the API
 
-Sample test files are available in:
+You can use your own question json and answer sheet pdf **OR** you can also use sample test files are available in:
 
 ```text
 doc/test PDFs/
+```
+```text
+doc/Architectural docs/
 ```
 
 You can use these files through the Swagger UI available at:
@@ -143,59 +148,114 @@ You can use these files through the Swagger UI available at:
 http://127.0.0.1:8000/docs
 ```
 
----
-
-# Common Issues
-
-## `GEMINI_API_KEY` is not set
-
-Ensure the environment variable exists and is accessible from the terminal in which you start the server.
-
-Verify with:
-
-### Linux / macOS
-
-```bash
-echo $GEMINI_API_KEY
-```
-
-### Windows (PowerShell)
-
-```powershell
-echo $env:GEMINI_API_KEY
-```
 
 ---
 
-## Missing Python Packages
+# API Response format
 
-Reinstall the project dependencies:
+The API returns a JSON object containing the AI-generated evaluation of the submitted answer sheet
 
-```bash
-pip install -r requirements.txt
+The following text describes the structured JSON schema and the rules used to represent, validate, and evaluate parsed student answer sheets. It serves as the official spec for both the **AI Service** and the **Frontend/Client Application** content display.
+
+---
+
+## General JSON Structure
+
+The parsed and evaluated student answer sheet is represented as a single JSON object structured as follows:
+
+```json
+{
+  "studentMetadata": {
+    "name": "String - Student name (empty if undetected/redacted)",
+    "rollNumber": "String - Roll number (empty if undetected/redacted)",
+    "examCode": "String - Subject/Exam code (e.g., '086')",
+    "subject": "String - Subject name (e.g., 'SCIENCE')"
+  },
+  "parsingStatus": {
+    "success": "Boolean - true if extraction is mostly reliable",
+    "paperClarity": "String - 'clear' | 'partially_clear' | 'unclear'",
+    "overallConfidence": "Number - Score from 0.0 to 1.0",
+    "errors": ["Array of Strings - Critical parsing error messages"],
+    "warnings": ["Array of Strings - Non-critical parsing warning messages"]
+  },
+  "answerBlocks": [
+    {
+      "id": "String - Unique hierarchical identifier matching question structure (e.g., 'Q1', 'Q7.i')",
+      "sourcePages": ["Array of Numbers - 1-based page indices where the answer is found"],
+      "attemptStatus": "String - 'attempted' | 'partial' | 'crossed_out' | 'uncertain'",
+      "confidence": "Number - Extraction confidence for this block from 0.0 to 1.0",
+      "errors": ["Array of Strings - Specific errors in parsing this answer block"],
+      "warnings": ["Array of Strings - Specific warnings in parsing this answer block"],
+      "issues": ["Array of Strings - Discrepancies or notes (e.g., skipped parts, misplaced answers)"],
+      "answerSummary": "String - Concise semantic summary of what the student wrote",
+      "satisfies": ["Array of Strings - Rubric criteria/points met by the student's answer"],
+      "missing": ["Array of Strings - Rubric criteria/points missing or weak in the student's answer"],
+      "earnedMarks": {
+        "value": "Number - Marks awarded (must not exceed max marks in questionStructure)",
+        "reason": "String - Short explanation for the awarded or docked marks"
+      },
+      "children": ["Recursive Array - Sub-questions answers following the same block structure"]
+    }
+  ],
+  "invalidAnswers": ["Array of Strings - IDs of redundant attempts from optional question conflicts"],
+  "attemptSummary": {
+    "totalAnswerBlocks": "Number - Total count of valid answer nodes extracted (excluding invalidAnswers)",
+    "attemptedQuestionIds": ["Array of Strings - Flat list of valid identified question IDs (excluding invalidAnswers)"]
+  }
+}
 ```
 
 ---
 
-## Port 8000 Already in Use
+## Field Definitions
 
-Start the server on another port:
+### 1. `studentMetadata`
+General information about the student if present on the answer sheet.
+* **`name`**: Student name (extract only explicitly visible information; do not infer missing values).
+* **`rollNumber`**: Student roll number (extract only explicitly visible information; do not infer missing values).
+* **`examCode`**: Subject/exam code (e.g., `"086"`).
+* **`subject`**: Subject name (e.g., `"SCIENCE"`).
 
-```bash
-fastapi dev app.py --port 8001
-```
+### 2. `parsingStatus`
+Global quality status of the scanned paper and OCR transcription:
+* **`success`**: `true` if extraction is mostly reliable; `false` if major extraction failures exist.
+* **`paperClarity`**: Overall answer sheet readability rating. Allowed values: `"clear"`, `"partially_clear"`, `"unclear"`.
+* **`overallConfidence`**: Score from `0.0` (impossible) to `1.0` (highly reliable) representing overall extraction certainty, factoring in handwriting readability, page quality, hierarchy certainty, and semantic interpretation certainty.
+* **`errors`**: Critical failures in pdf affecting extraction (e.g., `["Page 3 unreadable", "Question numbering missing"]`). Must always exist; use `[]` if none.
+* **`warnings`**: Non-critical issues (e.g., `["handwriting_unclear", "page tilted", "partial text overlap"]`). Must always exist; use `[]` if none.
 
-or
+### 3. `answerBlocks`
+A recursive structure mirroring the question paper hierarchy, housing the student's responses, criteria mapping, and awarded marks:
+* **`id`**: Use question hierarchy matching `questionStructure` exactly (e.g., `Q1`, `Q1.a`, `Q1.a.i`, `Q1.a.i.A`). If question identifier is unavailable, assign `UNMAPPED_1`, `UNMAPPED_2`, etc.
+* **`sourcePages`**: Page numbers (1-indexed) where the answer appears (e.g., `[2]` or `[2,3]`). Must always exist.
+* **`attemptStatus`**: Observed state of the answer attempt. Allowed values:
+  * `"attempted"`: Answer clearly written.
+  * `"partial"`: Answer started but incomplete.
+  * `"crossed_out"`: Answer intentionally cancelled.
+  * `"uncertain"`: Attempt presence unclear.
+* **`confidence`**: Score from `0.0` to `1.0` representing extraction confidence for this answer block, including handwriting, hierarchy, semantic, and answer boundary certainty.
+* **`errors`**: Localized block parsing errors. Must always exist; use `[]` if none.
+* **`warnings`**: Localized block parsing warnings (e.g., `"handwriting_unclear"`). Always exists as `[]` if none.
+* **`issues`**: Short descriptions of answer extraction or interpretation problems (e.g., `["Answer partially cut near page edge", "Question number uncertain"]`). Always exist as `[]` if none.
+* **`answerSummary`**: Concise semantic understanding of what the student wrote.
+  
+* **`satisfies`**: List of answer components/grading criteria successfully covered. Deserving of marks.
+  * *Example:* `["Correct definition provided", "Relevant example included", "Diagram labeled correctly"]`
+* **`missing`**: List of likely missing, incomplete, or weak components.
+  * *Example:* `["Explanation incomplete", "No example provided"]`
+* **`earnedMarks`**:
+  * **`value`**: Numerical score awarded.  Never exceeds maximum marks defined in `questionStructure`. If parent marks are `"infer from children and choice description"`, value must be derived from child nodes.
+  * **`reason`**: Short explanation explaining why marks were awarded or docked.
+    * *Example:* `"Definition correct but explanation incomplete"`
+* **`children`**: Recursive list of sub-answers. Always exists as `[]` if none (never `null`).
 
-```bash
-uvicorn app:app --reload --port 8001
-```
+### 4. `invalidAnswers`
+Contains IDs of redundant/excess answers resulting from optional/choice question conflicts. Do not include valid answers here.
+* *Example:* `["Q5.b", "Q8.c"]`
+
+### 5. `attemptSummary`
+Summary of student's attempts:
+* **`totalAnswerBlocks`**: Total number of valid answer nodes extracted (do not count `invalidAnswers`).
+* **`attemptedQuestionIds`**: Contains IDs of valid identified answers only (do not include `invalidAnswers`).
 
 ---
-
-# Development Notes
-
-* Do not hardcode API keys in the source code.
-* The Gemini API key must be available as the `GEMINI_API_KEY` environment variable before starting the server.
-* Docker support will be added in a future update to simplify project setup and deployment.
-
