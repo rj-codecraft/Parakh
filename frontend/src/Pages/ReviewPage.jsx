@@ -68,10 +68,15 @@ function ReviewPage() {
       });
 
       const data = await response.json();
-
-      if (response.ok && data.success) {
-        setSubmitStatus("success");
-      } else {
+        if (response.ok && data.success) {
+            navigate("/evaluation/upload", {
+             state: {
+              examPaperId: data.examPaperId,
+               filename,
+             },
+            });
+        } 
+      else {
         setSubmitStatus("error");
         setErrorMessage(data.error || `Server responded with status ${response.status}`);
       }
@@ -96,22 +101,22 @@ function ReviewPage() {
     );
   }
 
-  if (submitStatus === "success") {
-    return (
-      <div style={styles.container}>
-        <div style={styles.successCard}>
-          <div style={styles.successIcon}>✓</div>
-          <h2 style={styles.successTitle}>Question Paper Submitted Successfully!</h2>
-          <p style={styles.successText}>
-            The question paper and its rubrics for <strong>{filename}</strong> have been saved successfully to the database.
-          </p>
-          <button onClick={() => navigate("/")} style={styles.submitBtn}>
-            Return to Dashboard
-          </button>
-        </div>
-      </div>
-    );
-  }
+  // if (submitStatus === "success") {
+  //   return (
+  //     <div style={styles.container}>
+  //       <div style={styles.successCard}>
+  //         <div style={styles.successIcon}>✓</div>
+  //         <h2 style={styles.successTitle}>Question Paper Submitted Successfully!</h2>
+  //         <p style={styles.successText}>
+  //           The question paper and its rubrics for <strong>{filename}</strong> have been saved successfully to the database.
+  //         </p>
+  //         <button onClick={() => navigate("/")} style={styles.submitBtn}>
+  //           Return to Dashboard
+  //         </button>
+  //       </div>
+  //     </div>
+  //   );
+  // }
 
   return (
     <div style={styles.container}>

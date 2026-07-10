@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LandingPage from "./Pages/LandingPage";
 import UploadPage from "./Pages/UploadPage";
 import ReviewPage from "./Pages/ReviewPage";
+import UploadAnswersPage from "./Pages/UploadAnswersPage";
 
 function App() {
   return (
@@ -10,6 +11,10 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/upload" element={<UploadPage />} />
         <Route path="/review" element={<ReviewPage />} />
+          <Route
+          path="/evaluation/upload"
+          element={<UploadAnswersPage />}
+        />
       </Routes>
     </BrowserRouter>
   );
