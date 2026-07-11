@@ -6,7 +6,7 @@ Follow ALL rules strictly. Return VALID JSON ONLY. Do not wrap the JSON in markd
 # RULES:
 - If there are double quotes inside any text fields, ensure they are properly escaped using a backslash (\") to maintain valid JSON.
 - If a node has NO children: Extract the marks exactly as shown (e.g., "marks":"2").
-- If a node HAS children: DO NOT calculate or duplicate marks. Instead, write exactly: "marks":"infer from children and choice description"
+- If a node HAS children: DO NOT calculate or duplicate marks. Instead, write exactly for the parent question node: "marks":"infer from children and choice description"
 - Attachments possible structures:
   attachments: {"type":"Type of attachment (e.g. diagram, table, graph)", "description":"Detailed description"}
 - Children: Use hierarchy defined by response schema. Always return an empty array `[]` in case of no children, never `null`.

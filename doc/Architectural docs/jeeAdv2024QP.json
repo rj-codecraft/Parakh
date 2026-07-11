@@ -1,0 +1,2213 @@
+{
+    "paperMetadata": {
+        "duration": "",
+        "examType": "JEE (Advanced) 2024",
+        "instructions": {
+            "en": [],
+            "hi": []
+        },
+        "subject": "Mathematics, Physics, Chemistry",
+        "title": "Paper 1",
+        "totalMarks": 0
+    },
+    "parsingStatus": {
+        "confidence": 1,
+        "errors": [],
+        "paperClarity": "clear",
+        "success": true,
+        "warnings": []
+    },
+    "sections": [
+        {
+            "sectionId": "Mathematics Section 1",
+            "questions": [
+                {
+                    "type": "MCQ",
+                    "id": "Q1",
+                    "text": {
+                        "en": "Let f(x) be a continuously differentiable function on the interval (0,∞) such that f(1) = 2 and lim_{t→x} (t^10 f(x) - x^10 f(t)) / (t - x) = 1 for each x > 0. Then, for all x > 0, f(x) is equal to",
+                        "hi": ""
+                    },
+                    "marks": "3",
+                    "rubric": [],
+                    "options": [
+                        {
+                            "optionId": "A",
+                            "text": {
+                                "en": "31/(11x) - 9/11 x^10",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "B",
+                            "text": {
+                                "en": "9/(11x) + 13/11 x^10",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "C",
+                            "text": {
+                                "en": "-9/(11x) + 31/11 x^10",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "D",
+                            "text": {
+                                "en": "13/(11x) + 9/11 x^10",
+                                "hi": ""
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "MCQ",
+                    "id": "Q2",
+                    "text": {
+                        "en": "A student appears for a quiz consisting of only true-false type questions and answers all the questions. The student knows the answers of some questions and guesses the answers for the remaining questions. Whenever the student knows the answer of a question, he gives the correct answer. Assume that the probability of the student giving the correct answer for a question, given that he has guessed it, is 1/2. Also assume that the probability of the answer for a question being guessed, given that the student's answer is correct, is 1/6. Then the probability that the student knows the answer of a randomly chosen question is",
+                        "hi": ""
+                    },
+                    "marks": "3",
+                    "rubric": [],
+                    "options": [
+                        {
+                            "optionId": "A",
+                            "text": {
+                                "en": "1/12",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "B",
+                            "text": {
+                                "en": "1/7",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "C",
+                            "text": {
+                                "en": "5/7",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "D",
+                            "text": {
+                                "en": "5/12",
+                                "hi": ""
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "MCQ",
+                    "id": "Q3",
+                    "text": {
+                        "en": "Let π/2 < x < π be such that cot x = -5/√11. Then (sin(11x/2))(sin 6x - cos 6x) + (cos(11x/2))(sin 6x + cos 6x) is equal to",
+                        "hi": ""
+                    },
+                    "marks": "3",
+                    "rubric": [],
+                    "options": [
+                        {
+                            "optionId": "A",
+                            "text": {
+                                "en": "(√11 - 1) / (2√3)",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "B",
+                            "text": {
+                                "en": "(√11 + 1) / (2√3)",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "C",
+                            "text": {
+                                "en": "(√11 + 1) / (3√2)",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "D",
+                            "text": {
+                                "en": "(√11 - 1) / (3√2)",
+                                "hi": ""
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "MCQ",
+                    "id": "Q4",
+                    "text": {
+                        "en": "Consider the ellipse x^2/9 + y^2/4 = 1. Let S(p,q) be a point in the first quadrant such that p^2/9 + q^2/4 > 1. Two tangents are drawn from S to the ellipse, of which one meets the ellipse at one end point of the minor axis and the other meets the ellipse at a point T in the fourth quadrant. Let R be the vertex of the ellipse with positive x-coordinate and O be the center of the ellipse. If the area of the triangle AORT is 3/2, then which of the following options is correct?",
+                        "hi": ""
+                    },
+                    "marks": "3",
+                    "rubric": [],
+                    "options": [
+                        {
+                            "optionId": "A",
+                            "text": {
+                                "en": "q = 2, p = 3√3",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "B",
+                            "text": {
+                                "en": "q = 2, p = 4√3",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "C",
+                            "text": {
+                                "en": "q = 1, p = 5√3",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "D",
+                            "text": {
+                                "en": "q = 1, p = 6√3",
+                                "hi": ""
+                            }
+                        }
+                    ]
+                }
+            ],
+            "sectionChoices": [],
+            "sectionInstructions": {
+                "en": "This section contains FOUR (04) questions. Each question has FOUR options (A), (B), (C) and (D). ONLY ONE of these four options is the correct answer. For each question, choose the option corresponding to the correct answer. Answer to each question will be evaluated according to the following marking scheme: Full Marks : +3 If ONLY the correct option is chosen; Zero Marks : 0 If none of the options is chosen (i.e. the question is unanswered); Negative Marks: -1 In all other cases.",
+                "hi": ""
+            }
+        },
+        {
+            "sectionId": "Mathematics Section 2",
+            "questions": [
+                {
+                    "type": "MCQ",
+                    "id": "Q5",
+                    "text": {
+                        "en": "Let S={a+b√2 : a,b ∈Z}, T₁ = {(-1+√2)^n : n ∈N}, and T₂ = {(1+√2)^n :n∈N}. Then which of the following statements is (are) TRUE?",
+                        "hi": ""
+                    },
+                    "marks": "4",
+                    "rubric": [],
+                    "options": [
+                        {
+                            "optionId": "A",
+                            "text": {
+                                "en": "ZUT₁UT₂ ⊂ S",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "B",
+                            "text": {
+                                "en": "T₁ ∩ (0, 1/2024) = ∅, where ∅ denotes the empty set.",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "C",
+                            "text": {
+                                "en": "T₂ ∩ (2024,∞) ≠ ∅",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "D",
+                            "text": {
+                                "en": "For any given a,b∈Z, cos(π(a+b√2))+isin(π(a+b√2)) ∈ Z if and only if b = 0, where i = √-1.",
+                                "hi": ""
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "MCQ",
+                    "id": "Q6",
+                    "text": {
+                        "en": "Let R² denote R×R. Let S = {(a,b,c) : a,b,c ∈ R and ax² + 2bxy + cy² > 0 for all (x, y) ∈ R² – {(0,0)}}. Then which of the following statements is (are) TRUE?",
+                        "hi": ""
+                    },
+                    "marks": "4",
+                    "rubric": [],
+                    "options": [
+                        {
+                            "optionId": "A",
+                            "text": {
+                                "en": "(2, -7/2, 6) ∈ S",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "B",
+                            "text": {
+                                "en": "If (3,b,1/12) ∈ S, then |2b| < 1.",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "C",
+                            "text": {
+                                "en": "For any given (a,b,c) ∈ S, the system of linear equations ax + by = 1, bx + cy = -1 has a unique solution.",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "D",
+                            "text": {
+                                "en": "For any given (a,b,c) ∈ S, the system of linear equations (a+1)x + by = 0, bx + (c + 1)y = 0 has a unique solution.",
+                                "hi": ""
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "MCQ",
+                    "id": "Q7",
+                    "text": {
+                        "en": "Let R³ denote the three-dimensional space. Take two points P = (1,2,3) and Q = (4,2,7). Let dist(X,Y) denote the distance between two points X and Y in R³. Let S = {x ∈ R³ : (dist(X, P))² -(dist(X,Q))² = 50} and T = {Y ∈ R³ : (dist(Y,Q))² – (dist(Y, P))² = 50}. Then which of the following statements is (are) TRUE?",
+                        "hi": ""
+                    },
+                    "marks": "4",
+                    "rubric": [],
+                    "options": [
+                        {
+                            "optionId": "A",
+                            "text": {
+                                "en": "There is a triangle whose area is 1 and all of whose vertices are from S.",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "B",
+                            "text": {
+                                "en": "There are two distinct points L and M in T such that each point on the line segment LM is also in T.",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "C",
+                            "text": {
+                                "en": "There are infinitely many rectangles of perimeter 48, two of whose vertices are from S and the other two vertices are from T.",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "D",
+                            "text": {
+                                "en": "There is a square of perimeter 48, two of whose vertices are from S and the other two vertices are from T.",
+                                "hi": ""
+                            }
+                        }
+                    ]
+                }
+            ],
+            "sectionChoices": [],
+            "sectionInstructions": {
+                "en": "This section contains THREE (03) questions. Each question has FOUR options (A), (B), (C) and (D). ONE OR MORE THAN ONE of these four option(s) is (are) correct answer(s). For each question, choose the option(s) corresponding to (all) the correct answer(s). Answer to each question will be evaluated according to the following marking scheme: Full Marks : +4 ONLY if (all) the correct option(s) is(are) chosen; Partial Marks : +3 If all the four options are correct but ONLY three options are chosen; Partial Marks : +2 If three or more options are correct but ONLY two options are chosen, both of which are correct; Partial Marks : +1 If two or more options are correct but ONLY one option is chosen and it is a correct option; Zero Marks : 0 If none of the options is chosen (i.e. the question is unanswered); Negative Marks: -2 In all other cases. For example, in a question, if (A), (B) and (D) are the ONLY three options corresponding to correct answers, then choosing ONLY (A), (B) and (D) will get +4 marks; choosing ONLY (A) and (B) will get +2 marks; choosing ONLY (A) and (D) will get +2 marks; choosing ONLY (B) and (D) will get +2 marks; choosing ONLY (A) will get +1 mark; choosing ONLY (B) will get +1 mark; choosing ONLY (D) will get +1 mark; choosing no option (i.e. the question is unanswered) will get 0 marks; and choosing any other combination of options will get -2 marks.",
+                "hi": ""
+            }
+        },
+        {
+            "sectionId": "Mathematics Section 3",
+            "questions": [
+                {
+                    "type": "Theory",
+                    "id": "Q8",
+                    "text": {
+                        "en": "Let a = 3√2 and b = 1/(5^(1/6) √6). If x, y ∈ R are such that 3x+2y = log_b(18)^5 and 2x - y = log_b(√1080), then 4x+5y is equal to",
+                        "hi": ""
+                    },
+                    "marks": "4",
+                    "rubric": []
+                },
+                {
+                    "type": "Theory",
+                    "id": "Q9",
+                    "text": {
+                        "en": "Let f(x) = x⁴ + ax³ +bx² + c be a polynomial with real coefficients such that f(1) = -9. Suppose that i√3 is a root of the equation 4x³ +3ax² +2bx = 0, where i = √–1. If α₁,α₂, α₃, and α₄ are all the roots of the equation f(x) = 0, then |α₁|² +|α₂|²+|α₃|²+|α₄|² is equal to",
+                        "hi": ""
+                    },
+                    "marks": "4",
+                    "rubric": []
+                },
+                {
+                    "type": "Theory",
+                    "id": "Q10",
+                    "text": {
+                        "en": "Let S = {A = [[0, 1, c], [1, a, d], [1, b, e]] : a, b, c, d, e ∈ {0, 1} and |A| ∈ {−1,1}}, where |A| denotes the determinant of A. Then the number of elements in S is",
+                        "hi": ""
+                    },
+                    "marks": "4",
+                    "rubric": []
+                },
+                {
+                    "type": "Theory",
+                    "id": "Q11",
+                    "text": {
+                        "en": "A group of 9 students, S₁, S₂,...,S₉, is to be divided to form three teams X,Y, and Z of sizes 2,3, and 4, respectively. Suppose that s₁ cannot be selected for the team X, and S₂ cannot be selected for the team Y. Then the number of ways to form such teams, is",
+                        "hi": ""
+                    },
+                    "marks": "4",
+                    "rubric": []
+                },
+                {
+                    "type": "Theory",
+                    "id": "Q12",
+                    "text": {
+                        "en": "Let OP = (α-1)/α i + j+k, OQ=i+(β-1)/β j+k and OR=i+j+1/2 k be three vectors, where α, β∈ R − {0} and O denotes the origin. If (OP×OQ)·OR = 0 and the point (α, β, 2) lies on the plane 3x + 3y - z + l = 0, then the value of l is",
+                        "hi": ""
+                    },
+                    "marks": "4",
+                    "rubric": []
+                },
+                {
+                    "type": "Theory",
+                    "id": "Q13",
+                    "text": {
+                        "en": "Let X be a random variable, and let P(X = x) denote the probability that X takes the value x. Suppose that the points (x, P(X = x)), x = 0,1,2,3,4, lie on a fixed straight line in the xy-plane, and P(X = x) = 0 for all x ∈ R−{0,1,2,3,4}. If the mean of X is 5/2, and the variance of X is α, then the value of 24α is",
+                        "hi": ""
+                    },
+                    "marks": "4",
+                    "rubric": []
+                }
+            ],
+            "sectionChoices": [],
+            "sectionInstructions": {
+                "en": "This section contains SIX (06) questions. The answer to each question is a NON-NEGATIVE INTEGER. For each question, enter the correct integer corresponding to the answer using the mouse and the on-screen virtual numeric keypad in the place designated to enter the answer. Answer to each question will be evaluated according to the following marking scheme: Full Marks : +4 If ONLY the correct integer is entered; Zero Marks : 0 In all other cases.",
+                "hi": ""
+            }
+        },
+        {
+            "sectionId": "Mathematics Section 4",
+            "questions": [
+                {
+                    "type": "MTF",
+                    "id": "Q14",
+                    "text": {
+                        "en": "Let α and β be the distinct roots of the equation x²+x−1=0. Consider the set T = {1,α, β}. For a 3×3 matrix M = (a_ij), define R_i = a_i1 +a_i2 +a_i3 and C_j = a_1j +a_2j +a_3j for i = 1,2,3 and j = 1,2,3. Match each entry in List-I to the correct entry in List-II.",
+                        "hi": ""
+                    },
+                    "marks": "3",
+                    "rubric": [],
+                    "matchData": {
+                        "matchFrom": [
+                            {
+                                "en": "(P) The number of matrices M = (a_ij)_3x3 with all entries in T such that R_i = C_j = 0 for all i, j, is",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(Q) The number of symmetric matrices M = (a_ij)_3x3 with all entries in T such that C_j = 0 for all j, is",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(R) Let M = (a_ij)_3x3 be a skew symmetric matrix such that a_ij ∈T for i > j . Then the number of elements in the set {[[x], [y], [z]] : x, y, z∈R, M [[x], [y], [z]] = [[a_12], [0], [-a_23]]} is",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(S) Let M = (a_ij)_3x3 be a matrix with all entries in T such that R_i = 0 for all i. Then the absolute value of the determinant of M is",
+                                "hi": ""
+                            }
+                        ],
+                        "matchTo": [
+                            {
+                                "en": "(1) 1",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(2) 12",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(3) infinite",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(4) 6",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(5) 0",
+                                "hi": ""
+                            }
+                        ]
+                    },
+                    "options": [
+                        {
+                            "optionId": "A",
+                            "text": {
+                                "en": "(P)→(4) (Q)→(2) (R)→(5) (S)→(1)",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "B",
+                            "text": {
+                                "en": "(P)→(2) (Q)→(4) (R)→(1) (S)→(5)",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "C",
+                            "text": {
+                                "en": "(P)→(2) (Q)→(4) (R)→(3) (S)→(5)",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "D",
+                            "text": {
+                                "en": "(P)→(1) (Q)→(5) (R)→(3) (S)→(4)",
+                                "hi": ""
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "MTF",
+                    "id": "Q15",
+                    "text": {
+                        "en": "Let the straight line y = 2x touch a circle with center (0,α), α > 0, and radius r at a point A₁. Let B₁ be the point on the circle such that the line segment A₁B₁ is a diameter of the circle. Let α+r=5+√5. Match each entry in List-I to the correct entry in List-II.",
+                        "hi": ""
+                    },
+                    "marks": "3",
+                    "rubric": [],
+                    "matchData": {
+                        "matchFrom": [
+                            {
+                                "en": "(P) α equals",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(Q) r equals",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(R) A₁ equals",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(S) B₁ equals",
+                                "hi": ""
+                            }
+                        ],
+                        "matchTo": [
+                            {
+                                "en": "(1) (-2,4)",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(2) √5",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(3) (-2,6)",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(4) 5",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(5) (2,4)",
+                                "hi": ""
+                            }
+                        ]
+                    },
+                    "options": [
+                        {
+                            "optionId": "A",
+                            "text": {
+                                "en": "(P)→(4) (Q)→(2) (R)→(1) (S)→(3)",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "B",
+                            "text": {
+                                "en": "(P)→(2) (Q)→(4) (R)→(1) (S)→(3)",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "C",
+                            "text": {
+                                "en": "(P)→(4) (Q)→(2) (R)→(5) (S)→(3)",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "D",
+                            "text": {
+                                "en": "(P)→(2) (Q)→(4) (R)→(3) (S)→(5)",
+                                "hi": ""
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "MTF",
+                    "id": "Q16",
+                    "text": {
+                        "en": "Let γ ∈ R be such that the lines L₁ : (x+11)/1 = (y+21)/2 = (z+29)/3 and L₂: (x+16)/3 = (y+11)/2 = (z+4)/γ intersect. Let R₁ be the point of intersection of L₁ and L₂. Let O=(0,0,0), and n̂ denote a unit normal vector to the plane containing both the lines L₁ and L₂. Match each entry in List-I to the correct entry in List-II.",
+                        "hi": ""
+                    },
+                    "marks": "3",
+                    "rubric": [],
+                    "matchData": {
+                        "matchFrom": [
+                            {
+                                "en": "(P) γ equals",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(Q) A possible choice for n̂ is",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(R) OR₁ equals",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(S) A possible value of OR₁·n̂ is",
+                                "hi": ""
+                            }
+                        ],
+                        "matchTo": [
+                            {
+                                "en": "(1) −î− ĵ + k̂",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(2) √3",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(3) 1",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(4) (1/√6)î - (2/√6)ĵ + (1/√6)k̂",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(5) √2",
+                                "hi": ""
+                            }
+                        ]
+                    },
+                    "options": [
+                        {
+                            "optionId": "A",
+                            "text": {
+                                "en": "(P)→(3) (Q)→(4) (R)→(1) (S)→(2)",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "B",
+                            "text": {
+                                "en": "(P)→(5) (Q)→(4) (R)→(1) (S)→(2)",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "C",
+                            "text": {
+                                "en": "(P)→(3) (Q)→(4) (R)→(1) (S)→(5)",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "D",
+                            "text": {
+                                "en": "(P)→(3) (Q)→(1) (R)→(4) (S)→(5)",
+                                "hi": ""
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "MTF",
+                    "id": "Q17",
+                    "text": {
+                        "en": "Let f: R→R and g: R → R be functions defined by f(x) = {x|x|sin(1/x), x ≠ 0; 0, x = 0} and g(x) = {1-2x, 0≤x≤1/2; 0, otherwise}. Let a,b,c,d ∈ R. Define the function h: R→R by h(x)=af(x)+b(g(x)+g(1/2-x))+c(x-g(x))+d g(x), x ∈ R. Match each entry in List-I to the correct entry in List-II.",
+                        "hi": ""
+                    },
+                    "marks": "3",
+                    "rubric": [],
+                    "matchData": {
+                        "matchFrom": [
+                            {
+                                "en": "(P) If a = 0, b =1, c = 0, and d = 0, then",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(Q) If a = 1, b = 0, c = 0, and d = 0, then",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(R) If a = 0, b = 0, c=1, and d = 0, then",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(S) If a = 0, b = 0, c = 0, and d = 1, then",
+                                "hi": ""
+                            }
+                        ],
+                        "matchTo": [
+                            {
+                                "en": "(1) h is one-one.",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(2) h is onto.",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(3) h is differentiable on R.",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(4) the range of h is [0,1].",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(5) the range of h is {0,1}.",
+                                "hi": ""
+                            }
+                        ]
+                    },
+                    "options": [
+                        {
+                            "optionId": "A",
+                            "text": {
+                                "en": "(P)→(4) (Q)→(3) (R)→(1) (S)→(2)",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "B",
+                            "text": {
+                                "en": "(P)→(5) (Q)→(2) (R)→(4) (S)→(3)",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "C",
+                            "text": {
+                                "en": "(P)→(5) (Q)→(3) (R)→(2) (S)→(4)",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "D",
+                            "text": {
+                                "en": "(P)→(4) (Q)→(2) (R)→(1) (S)→(3)",
+                                "hi": ""
+                            }
+                        }
+                    ]
+                }
+            ],
+            "sectionChoices": [],
+            "sectionInstructions": {
+                "en": "This section contains FOUR (04) Matching List Sets. Each set has ONE Multiple Choice Question. Each set has TWO lists: List-I and List-II. List-I has Four entries (P), (Q), (R) and (S) and List-II has Five entries (1), (2), (3), (4) and (5). FOUR options are given in each Multiple Choice Question based on List-I and List-II and ONLY ONE of these four options satisfies the condition asked in the Multiple Choice Question. Answer to each question will be evaluated according to the following marking scheme: Full Marks : +3 ONLY if the option corresponding to the correct combination is chosen; Zero Marks : 0 If none of the options is chosen (i.e. the question is unanswered); Negative Marks: -1 In all other cases.",
+                "hi": ""
+            }
+        },
+        {
+            "sectionId": "Physics Section 1",
+            "questions": [
+                {
+                    "type": "MCQ",
+                    "id": "Q1",
+                    "text": {
+                        "en": "A dimensionless quantity is constructed in terms of electronic charge e, permittivity of free space ε₀, Planck's constant h, and speed of light c. If the dimensionless quantity is written as e^α ε₀^β h^γ c^δ and n is a non-zero integer, then (α, β, γ, δ) is given by",
+                        "hi": ""
+                    },
+                    "marks": "3",
+                    "rubric": [],
+                    "options": [
+                        {
+                            "optionId": "A",
+                            "text": {
+                                "en": "(2n, -n, -n, -n)",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "B",
+                            "text": {
+                                "en": "(n, -n, -2n, -n)",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "C",
+                            "text": {
+                                "en": "(n, -n, -n, -2n)",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "D",
+                            "text": {
+                                "en": "(2n, -n, -2n, -2n)",
+                                "hi": ""
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "MCQ",
+                    "id": "Q2",
+                    "text": {
+                        "en": "An infinitely long wire, located on the z-axis, carries a current I along the +z-direction and produces the magnetic field B. The magnitude of the line integral ∫ B · dl along a straight line from the point (-√3a, a, 0) to (a, a, 0) is given by [μ₀ is the magnetic permeability of free space.]",
+                        "hi": ""
+                    },
+                    "marks": "3",
+                    "rubric": [],
+                    "options": [
+                        {
+                            "optionId": "A",
+                            "text": {
+                                "en": "7μ₀I/24",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "B",
+                            "text": {
+                                "en": "7μ₀I/12",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "C",
+                            "text": {
+                                "en": "μ₀I/8",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "D",
+                            "text": {
+                                "en": "μ₀I/6",
+                                "hi": ""
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "MCQ",
+                    "id": "Q3",
+                    "text": {
+                        "en": "Two beads, each with charge q and mass m, are on a horizontal, frictionless, non-conducting, circular hoop of radius R. One of the beads is glued to the hoop at some point, while the other one performs small oscillations about its equilibrium position along the hoop. The square of the angular frequency of the small oscillations is given by [ε₀ is the permittivity of free space.]",
+                        "hi": ""
+                    },
+                    "marks": "3",
+                    "rubric": [],
+                    "options": [
+                        {
+                            "optionId": "A",
+                            "text": {
+                                "en": "q²/(4πε₀R³m)",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "B",
+                            "text": {
+                                "en": "q²/(32πε₀R³m)",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "C",
+                            "text": {
+                                "en": "q²/(8πε₀R³m)",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "D",
+                            "text": {
+                                "en": "q²/(16πε₀R³m)",
+                                "hi": ""
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "MCQ",
+                    "id": "Q4",
+                    "text": {
+                        "en": "A block of mass 5 kg moves along the x-direction subject to the force F = (−20x + 10) N, with the value of x in metre. At time t = 0 s, it is at rest at position x = 1 m. The position and momentum of the block at t = (π/4) s are",
+                        "hi": ""
+                    },
+                    "marks": "3",
+                    "rubric": [],
+                    "options": [
+                        {
+                            "optionId": "A",
+                            "text": {
+                                "en": "-0.5 m, 5 kg m/s",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "B",
+                            "text": {
+                                "en": "0.5 m, 0 kg m/s",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "C",
+                            "text": {
+                                "en": "0.5 m, -5 kg m/s",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "D",
+                            "text": {
+                                "en": "-1 m, 5 kg m/s",
+                                "hi": ""
+                            }
+                        }
+                    ]
+                }
+            ],
+            "sectionChoices": [],
+            "sectionInstructions": {
+                "en": "This section contains FOUR (04) questions. Each question has FOUR options (A), (B), (C) and (D). ONLY ONE of these four options is the correct answer. For each question, choose the option corresponding to the correct answer. Answer to each question will be evaluated according to the following marking scheme: Full Marks : +3 If ONLY the correct option is chosen; Zero Marks : 0 If none of the options is chosen (i.e. the question is unanswered); Negative Marks: -1 In all other cases.",
+                "hi": ""
+            }
+        },
+        {
+            "sectionId": "Physics Section 2",
+            "questions": [
+                {
+                    "type": "MCQ",
+                    "id": "Q5",
+                    "text": {
+                        "en": "A particle of mass m is moving in a circular orbit under the influence of the central force F(r) = -kr, corresponding to the potential energy V(r) = kr²/2, where k is a positive force constant and r is the radial distance from the origin. According to the Bohr's quantization rule, the angular momentum of the particle is given by L = nħ, where ħ = h/(2π), h is the Planck's constant, and n a positive integer. If v and E are the speed and total energy of the particle, respectively, then which of the following expression(s) is(are) correct?",
+                        "hi": ""
+                    },
+                    "marks": "4",
+                    "rubric": [],
+                    "options": [
+                        {
+                            "optionId": "A",
+                            "text": {
+                                "en": "r² = nħ √(1/(mk))",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "B",
+                            "text": {
+                                "en": "v² = nħ √(k/m³)",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "C",
+                            "text": {
+                                "en": "L/(mr²) = √(k/m)",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "D",
+                            "text": {
+                                "en": "E = nħ/2 √(k/m)",
+                                "hi": ""
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "MCQ",
+                    "id": "Q6",
+                    "text": {
+                        "en": "Two uniform strings of mass per unit length μ and 4μ, and length L and 2L, respectively, are joined at point O, and tied at two fixed ends P and Q, as shown in the figure. The strings are under a uniform tension T. If we define the frequency v₀ = 1/(2L)√(T/μ), which of the following statement(s) is(are) correct?",
+                        "hi": ""
+                    },
+                    "marks": "4",
+                    "rubric": [],
+                    "attachments": [
+                        {
+                            "description": "A horizontal line segment P-O-Q. P is at the left end, Q is at the right end. O is a point on the line. The segment P-O has length L and mass per unit length μ. The segment O-Q has length 2L and mass per unit length 4μ. The labels μ and 4μ are above their respective segments, and L and 2L are below.",
+                            "type": "diagram"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "optionId": "A",
+                            "text": {
+                                "en": "With a node at O, the minimum frequency of vibration of the composite string is v₀.",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "B",
+                            "text": {
+                                "en": "With an antinode at O, the minimum frequency of vibration of the composite string is 2v₀.",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "C",
+                            "text": {
+                                "en": "When the composite string vibrates at the minimum frequency with a node at O, it has 6 nodes, including the end nodes.",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "D",
+                            "text": {
+                                "en": "No vibrational mode with an antinode at O is possible for the composite string.",
+                                "hi": ""
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "MCQ",
+                    "id": "Q7",
+                    "text": {
+                        "en": "A glass beaker has a solid, plano-convex base of refractive index 1.60, as shown in the figure. The radius of curvature of the convex surface (SPU) is 9 cm, while the planar surface (STU) acts as a mirror. This beaker is filled with a liquid of refractive index n up to the level QPR. If the image of a point object O at a height of h (OT in the figure) is formed onto itself, then, which of the following option(s) is(are) correct?",
+                        "hi": ""
+                    },
+                    "marks": "4",
+                    "rubric": [],
+                    "attachments": [
+                        {
+                            "description": "A diagram showing a beaker with a plano-convex base. The base consists of a planar surface (STU) at the bottom and a convex surface (SPU) above it. The beaker is filled with a liquid up to a level QPR. A point object O is shown above the liquid surface, with a vertical line segment OT extending from O to the planar surface T. Q and R are points on the liquid surface, P is a point on the convex surface.",
+                            "type": "diagram"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "optionId": "A",
+                            "text": {
+                                "en": "For n = 1.42, h = 50 cm.",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "B",
+                            "text": {
+                                "en": "For n = 1.35, h = 36 cm.",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "C",
+                            "text": {
+                                "en": "For n = 1.45, h = 65 cm.",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "D",
+                            "text": {
+                                "en": "For n = 1.48, h = 85 cm.",
+                                "hi": ""
+                            }
+                        }
+                    ]
+                }
+            ],
+            "sectionChoices": [],
+            "sectionInstructions": {
+                "en": "This section contains THREE (03) questions. Each question has FOUR options (A), (B), (C) and (D). ONE OR MORE THAN ONE of these four option(s) is(are) correct answer(s). For each question, choose the option(s) corresponding to (all) the correct answer(s). Answer to each question will be evaluated according to the following marking scheme: Full Marks : +4 ONLY if (all) the correct option(s) is (are) chosen; Partial Marks : +3 If all the four options are correct but ONLY three options are chosen; Partial Marks : +2 If three or more options are correct but ONLY two options are chosen, both of which are correct; Partial Marks : +1 If two or more options are correct but ONLY one option is chosen and it is a correct option; Zero Marks : 0 If none of the options is chosen (i.e. the question is unanswered); Negative Marks: -2 In all other cases. For example, in a question, if (A), (B) and (D) are the ONLY three options corresponding to correct answers, then choosing ONLY (A), (B) and (D) will get +4 marks; choosing ONLY (A) and (B) will get +2 marks; choosing ONLY (A) and (D) will get +2 marks; choosing ONLY (B) and (D) will get +2 marks; choosing ONLY (A) will get +1 mark; choosing ONLY (B) will get +1 mark; choosing ONLY (D) will get +1 mark; choosing no option (i.e. the question is unanswered) will get 0 marks; and choosing any other combination of options will get -2 marks.",
+                "hi": ""
+            }
+        },
+        {
+            "sectionId": "Physics Section 3",
+            "questions": [
+                {
+                    "type": "Theory",
+                    "id": "Q8",
+                    "text": {
+                        "en": "The specific heat capacity of a substance is temperature dependent and is given by the formula C = kT, where k is a constant of suitable dimensions in SI units, and T is the absolute temperature. If the heat required to raise the temperature of 1 kg of the substance from -73 °C to 27 °C is nk, the value of n is [Given: 0 K = -273 °C.]",
+                        "hi": ""
+                    },
+                    "marks": "4",
+                    "rubric": []
+                },
+                {
+                    "type": "Theory",
+                    "id": "Q9",
+                    "text": {
+                        "en": "A disc of mass M and radius R is free to rotate about its vertical axis as shown in the figure. A battery operated motor of negligible mass is fixed to this disc at a point on its circumference. Another disc of the same mass M and radius R/2 is fixed to the motor's thin shaft. Initially, both the discs are at rest. The motor is switched on so that the smaller disc rotates at a uniform angular speed ω. If the angular speed at which the large disc rotates is ω/n, then the value of n is",
+                        "hi": ""
+                    },
+                    "marks": "4",
+                    "rubric": [],
+                    "attachments": [
+                        {
+                            "description": "A diagram showing two concentric circles. The outer circle represents a large disc of mass M and radius R. The inner circle represents a smaller disc of mass M and radius R/2. The smaller disc is attached to the circumference of the larger disc. Both discs share a common vertical axis of rotation.",
+                            "type": "diagram"
+                        }
+                    ]
+                },
+                {
+                    "type": "Theory",
+                    "id": "Q10",
+                    "text": {
+                        "en": "A point source S emits unpolarized light uniformly in all directions. At two points A and B, the ratio r = I_A/I_B of the intensities of light is 2. If a set of two polaroids having 45° angle between their pass-axes is placed just before point B, then the new value of r will be",
+                        "hi": ""
+                    },
+                    "marks": "4",
+                    "rubric": []
+                },
+                {
+                    "type": "Theory",
+                    "id": "Q11",
+                    "text": {
+                        "en": "A source (S) of sound has frequency 240 Hz. When the observer (O) and the source move towards each other at a speed v with respect to the ground (as shown in Case 1 in the figure), the observer measures the frequency of the sound to be 288 Hz. However, when the observer and the source move away from each other at the same speed v with respect to the ground (as shown in Case 2 in the figure), the observer measures the frequency of sound to be n Hz. The value of n is",
+                        "hi": ""
+                    },
+                    "marks": "4",
+                    "rubric": [],
+                    "attachments": [
+                        {
+                            "description": "Two diagrams showing a source (S) and an observer (O) moving relative to each other. Case 1: S and O move towards each other. An arrow from S points right towards O, labeled 'v'. An arrow from O points left towards S, labeled 'v'. Case 2: S and O move away from each other. An arrow from S points left, labeled 'v'. An arrow from O points right, labeled 'v'.",
+                            "type": "diagram"
+                        }
+                    ]
+                },
+                {
+                    "type": "Theory",
+                    "id": "Q12",
+                    "text": {
+                        "en": "Two large, identical water tanks, 1 and 2, kept on the top of a building of height H, are filled with water up to height h in each tank. Both the tanks contain an identical hole of small radius on their sides, close to their bottom. A pipe of the same internal radius as that of the hole is connected to tank 2, and the pipe ends at the ground level. When the water flows from the tanks 1 and 2 through the holes, the times taken to empty the tanks are t₁ and t₂, respectively. If H = (1/10)h, then the ratio t₁/t₂ is",
+                        "hi": ""
+                    },
+                    "marks": "4",
+                    "rubric": []
+                },
+                {
+                    "type": "Theory",
+                    "id": "Q13",
+                    "text": {
+                        "en": "A thin uniform rod of length L and certain mass is kept on a frictionless horizontal table with a massless string of length L fixed to one end (top view is shown in the figure). The other end of the string is pivoted to a point O. If a horizontal impulse P is imparted to the rod at a distance x = L/n from the mid-point of the rod (see figure), then the rod and string revolve together around the point O, with the rod remaining aligned with the string. In such a case, the value of n is",
+                        "hi": ""
+                    },
+                    "marks": "4",
+                    "rubric": [],
+                    "attachments": [
+                        {
+                            "description": "A top-view diagram. A point O is shown. A string of length L extends from O to one end of a rod. The rod has length L. The string is attached to one end of the rod. A point P is shown on the rod, at a distance x from the mid-point of the rod. The distance from the end of the rod attached to the string to the mid-point is L/2. The impulse P is applied at distance x from the mid-point.",
+                            "type": "diagram"
+                        }
+                    ]
+                }
+            ],
+            "sectionChoices": [],
+            "sectionInstructions": {
+                "en": "This section contains SIX (06) questions. The answer to each question is a NON-NEGATIVE INTEGER. For each question, enter the correct integer corresponding to the answer using the mouse and the on-screen virtual numeric keypad in the place designated to enter the answer. Answer to each question will be evaluated according to the following marking scheme: Full Marks : +4 If ONLY the correct integer is entered; Zero Marks : 0 In all other cases.",
+                "hi": ""
+            }
+        },
+        {
+            "sectionId": "Physics Section 4",
+            "questions": [
+                {
+                    "type": "MTF",
+                    "id": "Q14",
+                    "text": {
+                        "en": "One mole of a monatomic ideal gas undergoes the cyclic process J→ K→ L→ M→ J, as shown in the P-T diagram. Match the quantities mentioned in List-I with their values in List-II and choose the correct option. [R is the gas constant.]",
+                        "hi": ""
+                    },
+                    "marks": "3",
+                    "rubric": [],
+                    "attachments": [
+                        {
+                            "description": "A P-T diagram (Pressure vs Temperature). The y-axis is Pressure (P) and the x-axis is Temperature (T). The process is a cycle J->K->L->M->J. Point J is at (T₀, P₀). Point K is at (3T₀, P₀). Point L is at (3T₀, 2P₀). Point M is at (T₀, 2P₀). The path J-K is horizontal (constant pressure). The path K-L is vertical (constant temperature). The path L-M is horizontal (constant pressure). The path M-J is vertical (constant temperature).",
+                            "type": "diagram"
+                        }
+                    ],
+                    "matchData": {
+                        "matchFrom": [
+                            {
+                                "en": "(P) Work done in the complete cyclic process",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(Q) Change in the internal energy of the gas in the process JK",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(R) Heat given to the gas in the process KL",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(S) Change in the internal energy of the gas in the process MJ",
+                                "hi": ""
+                            }
+                        ],
+                        "matchTo": [
+                            {
+                                "en": "(1) RT₀ - 4RT₀ ln 2",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(2) 0",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(3) 3RT₀",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(4) -2RT₀ ln 2",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(5) -3RT₀ ln 2",
+                                "hi": ""
+                            }
+                        ]
+                    },
+                    "options": [
+                        {
+                            "optionId": "A",
+                            "text": {
+                                "en": "(P)→(1); (Q)→(3); (R)→(5); (S)→(4)",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "B",
+                            "text": {
+                                "en": "(P)→(4); (Q)→(3); (R)→(5); (S)→(2)",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "C",
+                            "text": {
+                                "en": "(P)→(4); (Q)→(1); (R)→(2); (S)→(2)",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "D",
+                            "text": {
+                                "en": "(P)→(2); (Q)→(5); (R)→(3); (S)→(4)",
+                                "hi": ""
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "MTF",
+                    "id": "Q15",
+                    "text": {
+                        "en": "Four identical thin, square metal sheets, S₁, S₂, S₃ and S₄, each of side a are kept parallel to each other with equal distance d (« a) between them, as shown in the figure. Let C₀ = ε₀a²/d, where ε₀ is the permittivity of free space. Match the quantities mentioned in List-I with their values in List-II and choose the correct option.",
+                        "hi": ""
+                    },
+                    "marks": "3",
+                    "rubric": [],
+                    "attachments": [
+                        {
+                            "description": "A diagram showing four parallel square metal sheets, S1, S2, S3, S4, arranged from left to right. Each sheet has side 'a'. The distance between adjacent sheets (S1-S2, S2-S3, S3-S4) is 'd'. The labels 'd' are shown between the sheets, and 'a' is shown as the side length of a sheet.",
+                            "type": "diagram"
+                        }
+                    ],
+                    "matchData": {
+                        "matchFrom": [
+                            {
+                                "en": "(P) The capacitance between S₁ and S₄, with S₂ and S₃ not connected, is",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(Q) The capacitance between S₁ and S₄, with S₂ shorted to S₃, is",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(R) The capacitance between S₁ and S₃, with S₂ shorted to S₄, is",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(S) The capacitance between S₁ and S₂, with S₃ shorted to S₁, and S₂ shorted to S₄, is",
+                                "hi": ""
+                            }
+                        ],
+                        "matchTo": [
+                            {
+                                "en": "(1) 3C₀",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(2) C₀/2",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(3) C₀/3",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(4) 2C₀/3",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(5) 2C₀",
+                                "hi": ""
+                            }
+                        ]
+                    },
+                    "options": [
+                        {
+                            "optionId": "A",
+                            "text": {
+                                "en": "(P)→(3); (Q)→(2); (R)→(4); (S)→(5)",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "B",
+                            "text": {
+                                "en": "(P)→(2); (Q)→(3); (R)→(2); (S)→(1)",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "C",
+                            "text": {
+                                "en": "(P)→(3); (Q)→(2); (R)→(4); (S)→(1)",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "D",
+                            "text": {
+                                "en": "(P)→(3); (Q)→(2); (R)→(2); (S)→(5)",
+                                "hi": ""
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "MTF",
+                    "id": "Q16",
+                    "text": {
+                        "en": "A light ray is incident on the surface of a sphere of refractive index n at an angle of incidence θ₀. The ray partially refracts into the sphere with angle of refraction φ₀ and then partly reflects from the back surface. The reflected ray then emerges out of the sphere after a partial refraction. The total angle of deviation of the emergent ray with respect to the incident ray is α. Match the quantities mentioned in List-I with their values in List-II and choose the correct option.",
+                        "hi": ""
+                    },
+                    "marks": "3",
+                    "rubric": [],
+                    "matchData": {
+                        "matchFrom": [
+                            {
+                                "en": "(P) If n = 2 and α = 180°, then all the possible values of θ₀ will be",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(Q) If n = √3 and α = 180°, then all the possible values of θ₀ will be",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(R) If n = √3 and α = 180°, then all the possible values of φ₀ will be",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(S) If n = √2 and θ₀ = 45°, then all the possible values of α will be",
+                                "hi": ""
+                            }
+                        ],
+                        "matchTo": [
+                            {
+                                "en": "(1) 30° and 0°",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(2) 60° and 0°",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(3) 45° and 0°",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(4) 150°",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(5) 0°",
+                                "hi": ""
+                            }
+                        ]
+                    },
+                    "options": [
+                        {
+                            "optionId": "A",
+                            "text": {
+                                "en": "(P)→(5); (Q)→(2); (R)→(1); (S)→(4)",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "B",
+                            "text": {
+                                "en": "(P)→(5); (Q)→(1); (R)→(2); (S)→(4)",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "C",
+                            "text": {
+                                "en": "(P)→(3); (Q)→(2); (R)→(1); (S)→(4)",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "D",
+                            "text": {
+                                "en": "(P)→(3); (Q)→(1); (R)→(2); (S)→(5)",
+                                "hi": ""
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "MTF",
+                    "id": "Q17",
+                    "text": {
+                        "en": "The circuit shown in the figure contains an inductor L, a capacitor C₀, a resistor R₀ and an ideal battery. The circuit also contains two keys K₁ and K₂. Initially, both the keys are open and there is no charge on the capacitor. At an instant, key K₁ is closed and immediately after this the current in R₀ is found to be I₁. After a long time, the current attains a steady state value I₂. Thereafter, K₂ is closed and simultaneously K₁ is opened and the voltage across C₀ oscillates with amplitude V₀ and angular frequency ω₀. Match the quantities mentioned in List-I with their values in List-II and choose the correct option.",
+                        "hi": ""
+                    },
+                    "marks": "3",
+                    "rubric": [],
+                    "attachments": [
+                        {
+                            "description": "A circuit diagram. A 20V battery is connected in series with a resistor R₀ = 5 Ω and a key K₁. In parallel to this series combination, there is a branch containing an inductor L = 25 mH and a capacitor C₀ = 10 μF in series, with a key K₂ in series with the capacitor. The inductor and capacitor are in series with each other, and this series combination is in parallel with the resistor R₀ and key K₁.",
+                            "type": "diagram"
+                        }
+                    ],
+                    "matchData": {
+                        "matchFrom": [
+                            {
+                                "en": "(P) The value of I₁ in Ampere is",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(Q) The value of I₂ in Ampere is",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(R) The value of ω₀ in kilo-radians/s is",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(S) The value of V₀ in Volt is",
+                                "hi": ""
+                            }
+                        ],
+                        "matchTo": [
+                            {
+                                "en": "(1) 0",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(2) 2",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(3) 4",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(4) 20",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(5) 200",
+                                "hi": ""
+                            }
+                        ]
+                    },
+                    "options": [
+                        {
+                            "optionId": "A",
+                            "text": {
+                                "en": "(P)→(1); (Q)→(3); (R)→(2); (S)→(5)",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "B",
+                            "text": {
+                                "en": "(P)→(1); (Q)→(2); (R)→(3); (S)→(5)",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "C",
+                            "text": {
+                                "en": "(P)→(1); (Q)→(3); (R)→(2); (S)→(4)",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "D",
+                            "text": {
+                                "en": "(P)→(2); (Q)→(5); (R)→(3); (S)→(4)",
+                                "hi": ""
+                            }
+                        }
+                    ]
+                }
+            ],
+            "sectionChoices": [],
+            "sectionInstructions": {
+                "en": "This section contains FOUR (04) Matching List Sets. Each set has ONE Multiple Choice Question. Each set has TWO lists: List-I and List-II. List-I has Four entries (P), (Q), (R) and (S) and List-II has Five entries (1), (2), (3), (4) and (5). FOUR options are given in each Multiple Choice Question based on List-I and List-II and ONLY ONE of these four options satisfies the condition asked in the Multiple Choice Question. Answer to each question will be evaluated according to the following marking scheme: Full Marks : +3 ONLY if the option corresponding to the correct combination is chosen; Zero Marks : 0 If none of the options is chosen (i.e. the question is unanswered); Negative Marks: -1 In all other cases.",
+                "hi": ""
+            }
+        },
+        {
+            "sectionId": "Chemistry Section 1",
+            "questions": [
+                {
+                    "type": "MCQ",
+                    "id": "Q1",
+                    "text": {
+                        "en": "A closed vessel contains 10 g of an ideal gas X at 300 K, which exerts 2 atm pressure. At the same temperature, 80 g of another ideal gas Y is added to it and the pressure becomes 6 atm. The ratio of root mean square velocities of X and Y at 300 K is",
+                        "hi": ""
+                    },
+                    "marks": "3",
+                    "rubric": [],
+                    "options": [
+                        {
+                            "optionId": "A",
+                            "text": {
+                                "en": "2√2 : √3",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "B",
+                            "text": {
+                                "en": "2√2 : 1",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "C",
+                            "text": {
+                                "en": "1 : 2",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "D",
+                            "text": {
+                                "en": "2 : 1",
+                                "hi": ""
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "MCQ",
+                    "id": "Q2",
+                    "text": {
+                        "en": "At room temperature, disproportionation of an aqueous solution of in situ generated nitrous acid (HNO₂) gives the species",
+                        "hi": ""
+                    },
+                    "marks": "3",
+                    "rubric": [],
+                    "options": [
+                        {
+                            "optionId": "A",
+                            "text": {
+                                "en": "H₃O⁺, NO₃⁻ and NO",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "B",
+                            "text": {
+                                "en": "H₃O⁺, NO₃ and NO₂",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "C",
+                            "text": {
+                                "en": "H₃O⁺, NO⁻ and NO₂",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "D",
+                            "text": {
+                                "en": "H₃O⁺, NO₃⁻ and N₂O",
+                                "hi": ""
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "MCQ",
+                    "id": "Q3",
+                    "text": {
+                        "en": "Aspartame, an artificial sweetener, is a dipeptide aspartyl phenylalanine methyl ester. The structure of aspartame is Structures of phenylalanine and aspartic acid are given below.",
+                        "hi": ""
+                    },
+                    "marks": "3",
+                    "rubric": [],
+                    "attachments": [
+                        {
+                            "description": "Two chemical structures are shown. The first is Phenylalanine: A benzene ring (Ph) attached to a CH₂ group, which is attached to a CH(NH₂)COOH group. The second is Aspartic acid: HOOC-CH₂-CH(NH₂)COOH. The question implies that the options (A), (B), (C), (D) are structures of Aspartame.",
+                            "type": "diagram"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "optionId": "A",
+                            "text": {
+                                "en": "Structure A: A dipeptide with a benzene ring (Ph) attached to a CH₂ group, which is attached to a CH(NH₂) group. This CH(NH₂) group is linked via an amide bond to another CH(COOH) group, which has a CH₂-COOH side chain. The terminal COOH is an OMe ester.",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "B",
+                            "text": {
+                                "en": "Structure B: A dipeptide with a benzene ring (Ph) attached to a CH₂ group, which is attached to a CH(NH₂) group. This CH(NH₂) group is linked via an amide bond to another CH(COOH) group, which has a CH₂-COOH side chain. The terminal COOH is an OMe ester.",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "C",
+                            "text": {
+                                "en": "Structure C: A dipeptide with a benzene ring (Ph) attached to a CH₂ group, which is attached to a CH(NH₂) group. This CH(NH₂) group is linked via an amide bond to another CH(COOH) group, which has a CH₂-COOH side chain. The terminal COOH is an OMe ester.",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "D",
+                            "text": {
+                                "en": "Structure D: A dipeptide with a benzene ring (Ph) attached to a CH₂ group, which is attached to a CH(NH₂) group. This CH(NH₂) group is linked via an amide bond to another CH(COOH) group, which has a CH₂-COOH side chain. The terminal COOH is an OMe ester.",
+                                "hi": ""
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "MCQ",
+                    "id": "Q4",
+                    "text": {
+                        "en": "Among the following options, select the option in which each complex in Set-I shows geometrical isomerism and the two complexes in Set-II are ionization isomers of each other. [en = H₂NCH₂CH₂NH₂]",
+                        "hi": ""
+                    },
+                    "marks": "3",
+                    "rubric": [],
+                    "options": [
+                        {
+                            "optionId": "A",
+                            "text": {
+                                "en": "Set-I: [Ni(CO)₄] and [PdCl₂(PPh₃)₂] Set-II: [Co(NH₃)₅Cl]SO₄ and [Co(NH₃)₅(SO₄)]Cl",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "B",
+                            "text": {
+                                "en": "Set-I: [Co(en)(NH₃)₂Cl₂] and [PdCl₂(PPh₃)₂] Set-II: [Co(NH₃)₆][Cr(CN)₆] and [Cr(NH₃)₆][Co(CN)₆]",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "C",
+                            "text": {
+                                "en": "Set-I: [Co(NH₃)₃(NO₂)₃] and [Co(en)₂Cl₂] Set-II: [Co(NH₃)₅Cl]SO₄ and [Co(NH₃)₅(SO₄)]Cl",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "D",
+                            "text": {
+                                "en": "Set-I: [Cr(NH₃)₅Cl]Cl₂ and [Co(en)(NH₃)₂Cl₂] Set-II: [Cr(H₂O)₆]Cl₃ and [Cr(H₂O)₅Cl]Cl₂·H₂O",
+                                "hi": ""
+                            }
+                        }
+                    ]
+                }
+            ],
+            "sectionChoices": [],
+            "sectionInstructions": {
+                "en": "This section contains FOUR (04) questions. Each question has FOUR options (A), (B), (C) and (D). ONLY ONE of these four options is the correct answer. For each question, choose the option corresponding to the correct answer. Answer to each question will be evaluated according to the following marking scheme: Full Marks : +3 If ONLY the correct option is chosen; Zero Marks : 0 If none of the options is chosen (i.e. the question is unanswered); Negative Marks: -1 In all other cases.",
+                "hi": ""
+            }
+        },
+        {
+            "sectionId": "Chemistry Section 2",
+            "questions": [
+                {
+                    "type": "MCQ",
+                    "id": "Q5",
+                    "text": {
+                        "en": "Among the following, the correct statement(s) for electrons in an atom is(are)",
+                        "hi": ""
+                    },
+                    "marks": "4",
+                    "rubric": [],
+                    "options": [
+                        {
+                            "optionId": "A",
+                            "text": {
+                                "en": "Uncertainty principle rules out the existence of definite paths for electrons.",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "B",
+                            "text": {
+                                "en": "The energy of an electron in 2s orbital of an atom is lower than the energy of an electron that is infinitely far away from the nucleus.",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "C",
+                            "text": {
+                                "en": "According to Bohr's model, the most negative energy value for an electron is given by n = 1, which corresponds to the most stable orbit.",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "D",
+                            "text": {
+                                "en": "According to Bohr's model, the magnitude of velocity of electrons increases with increase in values of n.",
+                                "hi": ""
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "MCQ",
+                    "id": "Q6",
+                    "text": {
+                        "en": "Reaction of iso-propylbenzene with O₂ followed by the treatment with H₃O⁺ forms phenol and a by-product P. Reaction of P with 3 equivalents of Cl₂ gives compound Q. Treatment of Q with Ca(OH)₂ produces compound R and calcium salt S. The correct statement(s) regarding P, Q, R and S is(are)",
+                        "hi": ""
+                    },
+                    "marks": "4",
+                    "rubric": [],
+                    "options": [
+                        {
+                            "optionId": "A",
+                            "text": {
+                                "en": "Reaction of P with R in the presence of KOH followed by acidification gives HOC(CCl₃)(CH₃)₂",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "B",
+                            "text": {
+                                "en": "Reaction of R with O₂ in the presence of light gives phosgene gas",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "C",
+                            "text": {
+                                "en": "Q reacts with aqueous NaOH to produce Cl₃CCH₂OH and Cl₃CCOONa",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "D",
+                            "text": {
+                                "en": "S on heating gives P",
+                                "hi": ""
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "MCQ",
+                    "id": "Q7",
+                    "text": {
+                        "en": "The option(s) in which at least three molecules follow Octet Rule is(are)",
+                        "hi": ""
+                    },
+                    "marks": "4",
+                    "rubric": [],
+                    "options": [
+                        {
+                            "optionId": "A",
+                            "text": {
+                                "en": "CO₂, C₂H₄, NO and HCl",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "B",
+                            "text": {
+                                "en": "NO₂, O₃, HCl and H₂SO₄",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "C",
+                            "text": {
+                                "en": "BCl₃, NO, NO₂ and H₂SO₄",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "D",
+                            "text": {
+                                "en": "CO₂, BCl₃, O₃ and C₂H₄",
+                                "hi": ""
+                            }
+                        }
+                    ]
+                }
+            ],
+            "sectionChoices": [],
+            "sectionInstructions": {
+                "en": "This section contains THREE (03) questions. Each question has FOUR options (A), (B), (C) and (D). ONE OR MORE THAN ONE of these four option(s) is(are) correct answer(s). For each question, choose the option(s) corresponding to (all) the correct answer(s). Answer to each question will be evaluated according to the following marking scheme: Full Marks : +4 ONLY if (all) the correct option(s) is(are) chosen; Partial Marks : +3 If all the four options are correct but ONLY three options are chosen; Partial Marks : +2 If three or more options are correct but ONLY two options are chosen, both of which are correct; Partial Marks : +1 If two or more options are correct but ONLY one option is chosen and it is a correct option; Zero Marks : 0 If none of the options is chosen (i.e. the question is unanswered); Negative Marks: -2 In all other cases. For example, in a question, if (A), (B) and (D) are the ONLY three options corresponding to correct answers, then choosing ONLY (A), (B) and (D) will get +4 marks; choosing ONLY (A) and (B) will get +2 marks; choosing ONLY (A) and (D) will get +2 marks; choosing ONLY (B) and (D) will get +2 marks; choosing ONLY (A) will get +1 mark; choosing ONLY (B) will get +1 mark; choosing ONLY (D) will get +1 mark; choosing no option (i.e. the question is unanswered) will get 0 marks; and choosing any other combination of options will get -2 marks.",
+                "hi": ""
+            }
+        },
+        {
+            "sectionId": "Chemistry Section 3",
+            "questions": [
+                {
+                    "type": "Theory",
+                    "id": "Q8",
+                    "text": {
+                        "en": "Consider the following volume-temperature (V-T) diagram for the expansion of 5 moles of an ideal monoatomic gas. Considering only P-V work is involved, the total change in enthalpy (in Joule) for the transformation of state in the sequence X→Y→Z is [Use the given data: Molar heat capacity of the gas for the given temperature range, C_v, m = 12 J K⁻¹ mol⁻¹ and gas constant, R = 8.3 J K⁻¹ mol⁻¹]",
+                        "hi": ""
+                    },
+                    "marks": "4",
+                    "rubric": [],
+                    "attachments": [
+                        {
+                            "description": "A V-T diagram (Volume vs Temperature). The y-axis is Volume (V) in Liters and the x-axis is Temperature (T) in Kelvin. Point X is at (335 K, 10 L). Point Y is at (335 K, 20 L). Point Z is at (415 K, 20 L). The path X-Y is vertical (constant temperature). The path Y-Z is horizontal (constant volume).",
+                            "type": "diagram"
+                        }
+                    ]
+                },
+                {
+                    "type": "Theory",
+                    "id": "Q9",
+                    "text": {
+                        "en": "Consider the following reaction, 2H₂(g) + 2NO(g) → N₂(g) + 2H₂O(g) which follows the mechanism given below: 2NO(g) ⇌ N₂O₂(g) (fast equilibrium) N₂O₂(g) + H₂(g) → N₂O(g) + H₂O(g) (slow reaction) N₂O(g) + H₂(g) → N₂(g) + H₂O(g) (fast reaction) The order of the reaction is",
+                        "hi": ""
+                    },
+                    "marks": "4",
+                    "rubric": []
+                },
+                {
+                    "type": "Theory",
+                    "id": "Q10",
+                    "text": {
+                        "en": "Complete reaction of acetaldehyde with excess formaldehyde, upon heating with conc. NaOH solution, gives P and Q. Compound P does not give Tollens' test, whereas Q on acidification gives positive Tollens' test. Treatment of P with excess cyclohexanone in the presence of catalytic amount of p-toluenesulfonic acid (PTSA) gives product R. Sum of the number of methylene groups (-CH₂-) and oxygen atoms in R is",
+                        "hi": ""
+                    },
+                    "marks": "4",
+                    "rubric": []
+                },
+                {
+                    "type": "Theory",
+                    "id": "Q11",
+                    "text": {
+                        "en": "Among V(CO)₆, Cr(CO)₅, Cu(CO)₃, Mn(CO)₅, Fe(CO)₅, [Co(CO)₃]³⁻, [Cr(CO)₄]⁴⁻, and Ir(CO)₃, the total number of species isoelectronic with Ni(CO)₄ is [Given, atomic number: V = 23, Cr = 24, Mn = 25, Fe = 26, Co = 27, Ni = 28, Cu = 29, Ir = 77]",
+                        "hi": ""
+                    },
+                    "marks": "4",
+                    "rubric": []
+                },
+                {
+                    "type": "Theory",
+                    "id": "Q12",
+                    "text": {
+                        "en": "In the following reaction sequence, the major product P is formed. H-C≡C-CO₂Et undergoes i) Hg²⁺, H₃O⁺; ii) Zn-Hg/HCl; iii) H₃O⁺, Δ to give P. Glycerol reacts completely with excess P in the presence of an acid catalyst to form Q. Reaction of Q with excess NaOH followed by the treatment with CaCl₂ yields Ca-soap R, quantitatively. Starting with one mole of Q, the amount of R produced in gram is [Given, atomic weight: H = 1, C = 12, N = 14, O = 16, Na = 23, Cl = 35, Ca = 40]",
+                        "hi": ""
+                    },
+                    "marks": "4",
+                    "rubric": [],
+                    "attachments": [
+                        {
+                            "description": "A reaction scheme showing H-C≡C-CO₂Et (ethyl propiolate) undergoing a three-step reaction: i) Hg²⁺, H₃O⁺; ii) Zn-Hg/HCl; iii) H₃O⁺, Δ to form product P. The structure of P is not explicitly given but is the result of these reactions.",
+                            "type": "reaction_scheme"
+                        }
+                    ]
+                },
+                {
+                    "type": "Theory",
+                    "id": "Q13",
+                    "text": {
+                        "en": "Among the following complexes, the total number of diamagnetic species is [Mn(NH₃)₆]³⁺, [MnCl₆]³⁻, [FeF₆]³⁻, [CoF₆]³⁻, [Fe(NH₃)₆]³⁺, and [Co(en)₃]³⁺ [Given, atomic number: Mn = 25, Fe = 26, Co = 27; en = H₂NCH₂CH₂NH₂]",
+                        "hi": ""
+                    },
+                    "marks": "4",
+                    "rubric": []
+                }
+            ],
+            "sectionChoices": [],
+            "sectionInstructions": {
+                "en": "This section contains SIX (06) questions. The answer to each question is a NON-NEGATIVE INTEGER. For each question, enter the correct integer corresponding to the answer using the mouse and the on-screen virtual numeric keypad in the place designated to enter the answer. Answer to each question will be evaluated according to the following marking scheme: Full Marks : +4 If ONLY the correct integer is entered; Zero Marks : 0 In all other cases.",
+                "hi": ""
+            }
+        },
+        {
+            "sectionId": "Chemistry Section 4",
+            "questions": [
+                {
+                    "type": "MTF",
+                    "id": "Q14",
+                    "text": {
+                        "en": "In a conductometric titration, small volume of titrant of higher concentration is added stepwise to a larger volume of titrate of much lower concentration, and the conductance is measured after each addition. The limiting ionic conductivity (Λ₀) values (in mS m² mol⁻¹) for different ions in aqueous solutions are given below: Ions: Ag⁺ (6.2), K⁺ (7.4), Na⁺ (5.0), H⁺ (35.0), NO₃⁻ (7.2), Cl⁻ (7.6), SO₄²⁻ (16.0), OH⁻ (19.9), CH₃COO⁻ (4.1). For different combinations of titrates and titrants given in List-I, the graphs of 'conductance' versus 'volume of titrant' are given in List-II. Match each entry in List-I with the appropriate entry in List-II and choose the correct option.",
+                        "hi": ""
+                    },
+                    "marks": "3",
+                    "rubric": [],
+                    "matchData": {
+                        "matchFrom": [
+                            {
+                                "en": "(P) Titrate: KCl Titrant: AgNO₃",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(Q) Titrate: AgNO₃ Titrant: KCl",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(R) Titrate: NaOH Titrant: HCl",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(S) Titrate: NaOH Titrant: CH₃COOH",
+                                "hi": ""
+                            }
+                        ],
+                        "matchTo": [
+                            {
+                                "en": "(1) Graph showing initial high conductance, decreasing, then increasing sharply.",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(2) Graph showing initial low conductance, decreasing, then increasing sharply.",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(3) Graph showing initial high conductance, decreasing, then increasing gradually.",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(4) Graph showing initial low conductance, increasing, then decreasing.",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(5) Graph showing initial low conductance, increasing gradually, then increasing sharply.",
+                                "hi": ""
+                            }
+                        ]
+                    },
+                    "options": [
+                        {
+                            "optionId": "A",
+                            "text": {
+                                "en": "(P)-4, (Q)-3, (R)-2, (S)-5",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "B",
+                            "text": {
+                                "en": "(P)-2, (Q)-4, (R)-3, (S)-1",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "C",
+                            "text": {
+                                "en": "(P)-3, (Q)-4, (R)-2, (S)-5",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "D",
+                            "text": {
+                                "en": "(P)-4, (Q)-3, (R)-2, (S)-1",
+                                "hi": ""
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "MTF",
+                    "id": "Q15",
+                    "text": {
+                        "en": "Based on VSEPR model, match the xenon compounds given in List-I with the corresponding geometries and the number of lone pairs on xenon given in List-II and choose the correct option.",
+                        "hi": ""
+                    },
+                    "marks": "3",
+                    "rubric": [],
+                    "matchData": {
+                        "matchFrom": [
+                            {
+                                "en": "(P) XeF₂",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(Q) XeF₄",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(R) XeO₃",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(S) XeO₃F₂",
+                                "hi": ""
+                            }
+                        ],
+                        "matchTo": [
+                            {
+                                "en": "(1) Trigonal bipyramidal and two lone pair of electrons",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(2) Tetrahedral and one lone pair of electrons",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(3) Octahedral and two lone pair of electrons",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(4) Trigonal bipyramidal and no lone pair of electrons",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(5) Trigonal bipyramidal and three lone pair of electrons",
+                                "hi": ""
+                            }
+                        ]
+                    },
+                    "options": [
+                        {
+                            "optionId": "A",
+                            "text": {
+                                "en": "(P)-5, (Q)-2, (R)-3, (S)-1",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "B",
+                            "text": {
+                                "en": "(P)-5, (Q)-3, (R)-2, (S)-4",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "C",
+                            "text": {
+                                "en": "(P)-4, (Q)-3, (R)-2, (S)-1",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "D",
+                            "text": {
+                                "en": "(P)-4, (Q)-2, (R)-5, (S)-3",
+                                "hi": ""
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "MTF",
+                    "id": "Q16",
+                    "text": {
+                        "en": "List-I contains various reaction sequences and List-II contains the possible products. Match each entry in List-I with the appropriate entry in List-II and choose the correct option.",
+                        "hi": ""
+                    },
+                    "marks": "3",
+                    "rubric": [],
+                    "matchData": {
+                        "matchFrom": [
+                            {
+                                "en": "(P) Cyclohexene undergoes i) O₃, Zn; ii) aq. NaOH, Δ; iii) ethylene glycol, PTSA; iv) a) BH₃, b) H₂O₂, NaOH; v) H₃O⁺; vi) NaBH₄",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(Q) 1-Methylcyclohexene undergoes i) O₃, Zn; ii) aq. NaOH, Δ; iii) ethylene glycol, PTSA; iv) a) BH₃, b) H₂O₂, NaOH; v) H₃O⁺; vi) NaBH₄",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(R) Cyclohexanone undergoes i) ethylene glycol, PTSA; ii) a) Hg(OAc)₂, H₂O, b) NaBH₄; iii) H₃O⁺; iv) NaBH₄",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(S) 1-Methylcyclohexene undergoes i) ethylene glycol, PTSA; ii) a) BH₃, b) H₂O₂, NaOH; iii) H₃O⁺; iv) NaBH₄",
+                                "hi": ""
+                            }
+                        ],
+                        "matchTo": [
+                            {
+                                "en": "(1) Product structure: A six-membered ring with a methyl group, and two hydroxyl groups on adjacent carbons.",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(2) Product structure: A six-membered ring with a methyl group, and two hydroxyl groups on adjacent carbons.",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(3) Product structure: A six-membered ring with two hydroxyl groups on adjacent carbons.",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(4) Product structure: A six-membered ring with a methyl group, and two hydroxyl groups on adjacent carbons.",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(5) Product structure: A six-membered ring with a methyl group, and two hydroxyl groups on adjacent carbons.",
+                                "hi": ""
+                            }
+                        ]
+                    },
+                    "options": [
+                        {
+                            "optionId": "A",
+                            "text": {
+                                "en": "(P)-3, (Q)-5, (R)-4, (S)-1",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "B",
+                            "text": {
+                                "en": "(P)-3, (Q)-2, (R)-4, (S)-1",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "C",
+                            "text": {
+                                "en": "(P)-3, (Q)-5, (R)-1, (S)-4",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "D",
+                            "text": {
+                                "en": "(P)-5, (Q)-2, (R)-4, (S)-1",
+                                "hi": ""
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "MTF",
+                    "id": "Q17",
+                    "text": {
+                        "en": "List-I contains various reaction sequences and List-II contains different phenolic compounds. Match each entry in List-I with the appropriate entry in List-II and choose the correct option.",
+                        "hi": ""
+                    },
+                    "marks": "3",
+                    "rubric": [],
+                    "matchData": {
+                        "matchFrom": [
+                            {
+                                "en": "(P) Benzene sulfonic acid (SO₃H on benzene ring) undergoes i) molten NaOH, H₃O⁺; ii) Conc. HNO₃",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(Q) Nitrobenzene (NO₂ on benzene ring) undergoes i) Conc. HNO₃ / Conc. H₂SO₄; ii) Sn / HCl; iii) NaNO₂ /HCl, 0 - 5 °C; iv) H₂O; v) Conc. HNO₃ / Conc. H₂SO₄",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(R) Phenol (OH on benzene ring) undergoes i) Conc. H₂SO₄; ii) Conc. HNO₃; iii) H₃O⁺, Δ",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(S) Toluene (CH₃ on benzene ring) undergoes i) a) KMnO₄ / KOH, Δ; b) H₃O⁺; ii) Conc. HNO₃ / Conc. H₂SO₄, Δ; iii) a) SOCl₂, b) NH₃; iv) Br₂, NaOH; v) NaNO₂ / HCl, 0 - 5 °C; vi) H₂O",
+                                "hi": ""
+                            }
+                        ],
+                        "matchTo": [
+                            {
+                                "en": "(1) Product structure: Benzene ring with OH, NO₂, NO₂ groups.",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(2) Product structure: Benzene ring with OH, NO₂, NO₂ groups.",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(3) Product structure: Benzene ring with OH, NO₂, NO₂ groups.",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(4) Product structure: Benzene ring with OH, NO₂, NO₂ groups.",
+                                "hi": ""
+                            },
+                            {
+                                "en": "(5) Product structure: Benzene ring with OH, NO₂, NO₂ groups.",
+                                "hi": ""
+                            }
+                        ]
+                    },
+                    "options": [
+                        {
+                            "optionId": "A",
+                            "text": {
+                                "en": "(P)-2, (Q)-3, (R)-4, (S)-5",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "B",
+                            "text": {
+                                "en": "(P)-2, (Q)-3, (R)-5, (S)-1",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "C",
+                            "text": {
+                                "en": "(P)-3, (Q)-5, (R)-4, (S)-1",
+                                "hi": ""
+                            }
+                        },
+                        {
+                            "optionId": "D",
+                            "text": {
+                                "en": "(P)-3, (Q)-2, (R)-5, (S)-4",
+                                "hi": ""
+                            }
+                        }
+                    ]
+                }
+            ],
+            "sectionChoices": [],
+            "sectionInstructions": {
+                "en": "This section contains FOUR (04) Matching List Sets. Each set has ONE Multiple Choice Question. Each set has TWO lists: List-I and List-II. List-I has Four entries (P), (Q), (R) and (S) and List-II has Five entries (1), (2), (3), (4) and (5). FOUR options are given in each Multiple Choice Question based on List-I and List-II and ONLY ONE of these four options satisfies the condition asked in the Multiple Choice Question. Answer to each question will be evaluated according to the following marking scheme: Full Marks : +3 ONLY if the option corresponding to the correct combination is chosen; Zero Marks : 0 If none of the options is chosen (i.e. the question is unanswered); Negative Marks: -1 In all other cases.",
+                "hi": ""
+            }
+        }
+    ],
+    "globalChoices": []
+}
