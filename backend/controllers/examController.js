@@ -22,6 +22,7 @@ const uploadPaper = async (req, res, next) => {
       console.error("[Exam] [AI SERVICE ERROR] =>", aiError.message);
       const errorMessage =
         aiError.response?.data?.error ||
+        aiError.response?.data?.message ||
         aiError.message ||
         "AI service unavailable";
       const error = new Error(`AI service error: ${errorMessage}`);
@@ -53,10 +54,11 @@ const uploadPaper = async (req, res, next) => {
  * 3. Returns a success message
  */
 const generateRubric = async (req, res, next) => {
-  const { pdf_filename, parsed_data } = req.body;
+  const { pdf_filename, parsed_data, questionPaperId, question_paper_id } = req.body;
+  const paperId = questionPaperId || question_paper_id;
   const filename = pdf_filename || "unknown_paper.pdf";
   
-  console.log(`[Exam] >>> Incoming POST /api/exams/generate-rubric. File: ${filename}`);
+  console.log(`[Exam] >>> Incoming POST /api/exams/generate-rubric. File: ${filename}, ID: ${paperId || "new"}`);
 
   try {
     if (!parsed_data) {
@@ -67,9 +69,15 @@ const generateRubric = async (req, res, next) => {
       });
     }
 
-    console.log("[Exam] => Storing parsed question paper and rubrics in database...");
-    const result = await examService.storeExamPaper(parsed_data, filename);
-    console.log(`[Exam] => Successfully stored in DB with Record ID: ${result.id}`);
+    let result;
+    if (paperId) {
+      console.log(`[Exam] => Updating parsed question paper and rubrics in database for ID: ${paperId}`);
+      result = await examService.updateExamPaper(paperId, parsed_data, filename);
+    } else {
+      console.log("[Exam] => Storing new parsed question paper and rubrics in database...");
+      result = await examService.storeExamPaper(parsed_data, filename);
+    }
+    console.log(`[Exam] => Successfully stored/updated in DB with Record ID: ${result.id}`);
 
     console.log(`[Exam] <<< Responding 201 Created. ID: ${result.id}`);
     return res.status(201).json({
@@ -84,4 +92,23 @@ const generateRubric = async (req, res, next) => {
   }
 };
 
-module.exports = { uploadPaper, generateRubric };
+/**
+ * Handles GET /api/exams/list
+ *
+ * Retrieves all previously parsed and saved exam papers.
+ */
+const listPapers = async (req, res, next) => {
+  console.log("[Exam] >>> Incoming GET /api/exams/list");
+  try {
+    const data = await examService.listExamPapers();
+    return res.status(200).json({
+      success: true,
+      papers: data,
+    });
+  } catch (error) {
+    console.error(`[Exam] [FATAL ERROR] => ${error.message}`);
+    next(error);
+  }
+};
+
+module.exports = { uploadPaper, generateRubric, listPapers };

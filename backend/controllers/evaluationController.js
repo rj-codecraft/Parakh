@@ -84,6 +84,7 @@ const uploadAnswers = async (req, res, next) => {
       const errorMessage =
         aiError.response?.data?.detail ||
         aiError.response?.data?.error ||
+        aiError.response?.data?.message ||
         aiError.message ||
         "AI service unavailable";
       const error = new Error(`AI service evaluation error: ${errorMessage}`);

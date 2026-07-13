@@ -6,6 +6,55 @@ import { jsPDF } from "jspdf";
 export default function FileUploader() {
   const navigate = useNavigate();
   const [files, setFiles] = useState([]);
+  const [activeTab, setActiveTab] = useState("upload"); // upload | select
+  const [existingPapers, setExistingPapers] = useState([]);
+  const [isLoadingPapers, setIsLoadingPapers] = useState(false);
+  const [loadPapersError, setLoadPapersError] = useState("");
+
+  const fetchExistingPapers = async () => {
+    setIsLoadingPapers(true);
+    setLoadPapersError("");
+    try {
+      const backendBase = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
+      const response = await fetch(`${backendBase}/api/exams/list`);
+      
+      let data = null;
+      const contentType = response.headers.get("content-type");
+      if (contentType && contentType.includes("application/json")) {
+        try {
+          data = await response.json();
+        } catch (jsonErr) {
+          console.error("Failed to parse JSON response:", jsonErr);
+        }
+      }
+
+      if (response.ok && data && data.success) {
+        setExistingPapers(data.papers || []);
+      } else {
+        setLoadPapersError((data && data.error) || "Failed to load previously uploaded papers.");
+      }
+    } catch (err) {
+      console.error("Error loading papers:", err);
+      setLoadPapersError("Failed to connect to the backend server.");
+    } finally {
+      setIsLoadingPapers(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchExistingPapers();
+  }, []);
+
+  const handleSelectPaper = (paper) => {
+    navigate("/review", {
+      state: {
+        questionPaperId: paper.id,
+        filename: paper.pdf_filename,
+        questionPaper: paper.parsed_data
+      }
+    });
+  };
+
   const [dragActive, setDragActive] = useState(false);
   const [uploadStatus, setUploadStatus] = useState("idle"); // idle | uploading | success | error
   const [errorMessage, setErrorMessage] = useState("");
@@ -230,14 +279,24 @@ export default function FileUploader() {
         body: formData,
       });
 
-      const data = await response.json();
-      if (response.ok && data.success) {
+      let data = null;
+      const contentType = response.headers.get("content-type");
+      if (contentType && contentType.includes("application/json")) {
+        try {
+          data = await response.json();
+        } catch (jsonErr) {
+          console.error("Failed to parse JSON response:", jsonErr);
+        }
+      }
+
+      if (response.ok && data && data.success) {
         setUploadStatus("success");
         setResponseData(data);
         navigate("/review", { state: data });
       } else {
         setUploadStatus("error");
-        setErrorMessage(data.error || `Server responded with status ${response.status}`);
+        const errMsg = (data && data.error) || (data && data.message) || `Server responded with status ${response.status}`;
+        setErrorMessage(errMsg);
       }
     } catch (error) {
       console.error("Network error:", error);
@@ -278,235 +337,330 @@ export default function FileUploader() {
           Test Step 2 (Mock Data)
         </button>
 
-        <form onSubmit={uploadFile} style={styles.form}>
-          <input
-            ref={fileInputRef}
-            type="file"
-            accept=".pdf,application/pdf,image/*"
-            onChange={handleFileChange}
-            style={styles.hiddenInput}
-            multiple
-          />
+        {/* Tab switcher */}
+        <div style={styles.tabContainer}>
+          <button
+            type="button"
+            onClick={() => setActiveTab("upload")}
+            style={{
+              ...styles.tabButton,
+              ...(activeTab === "upload" ? styles.tabActive : styles.tabInactive),
+            }}
+          >
+            📤 Upload New
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              setActiveTab("select");
+              fetchExistingPapers();
+            }}
+            style={{
+              ...styles.tabButton,
+              ...(activeTab === "select" ? styles.tabActive : styles.tabInactive),
+            }}
+          >
+            📁 Select Existing
+          </button>
+        </div>
 
-          {/* Drag & Drop Area */}
-          {files.length === 0 && (
-            <div
-              style={{
-                ...styles.dropZone,
-                borderColor: dragActive ? "var(--accent)" : "var(--border)",
-                backgroundColor: dragActive ? "var(--accent-bg)" : "transparent",
-              }}
-              onDragEnter={handleDrag}
-              onDragOver={handleDrag}
-              onDragLeave={handleDrag}
-              onDrop={handleDrop}
-              onClick={onButtonClick}
-            >
-              <div style={styles.iconContainer}>
+        {activeTab === "upload" ? (
+          <form onSubmit={uploadFile} style={styles.form}>
+            <input
+              ref={fileInputRef}
+              type="file"
+              accept=".pdf,application/pdf,image/*"
+              onChange={handleFileChange}
+              style={styles.hiddenInput}
+              multiple
+            />
+
+            {/* Drag & Drop Area */}
+            {files.length === 0 && (
+              <div
+                style={{
+                  ...styles.dropZone,
+                  borderColor: dragActive ? "var(--accent)" : "var(--border)",
+                  backgroundColor: dragActive ? "var(--accent-bg)" : "transparent",
+                }}
+                onDragEnter={handleDrag}
+                onDragOver={handleDrag}
+                onDragLeave={handleDrag}
+                onDrop={handleDrop}
+                onClick={onButtonClick}
+              >
+                <div style={styles.iconContainer}>
+                  <svg
+                    width="48"
+                    height="48"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="var(--accent)"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
+                    <polyline points="14 2 14 8 20 8" />
+                    <path d="M9 15h1.5a1.5 1.5 0 0 0 0-3H9v4Z" />
+                    <path d="M12 12v4" />
+                    <path d="M12 12h2" />
+                  </svg>
+                </div>
+                <p style={styles.dropText}>
+                  Drag & drop your PDF or Images here, or <span style={styles.browseText}>browse</span>
+                </p>
+                <p style={styles.limitText}>Maximum size: 20 MB</p>
+              </div>
+            )}
+
+            {/* Selected File(s) Details */}
+            {files.length > 0 && (
+              <div style={styles.fileDetailsCard}>
+                <div style={styles.fileDetailsRow}>
+                  <div 
+                    style={{
+                      ...styles.pdfBadge, 
+                      backgroundColor: isPdf ? "rgba(239, 68, 68, 0.1)" : "rgba(59, 130, 246, 0.1)",
+                      borderColor: isPdf ? "rgba(239, 68, 68, 0.2)" : "rgba(59, 130, 246, 0.2)",
+                      cursor: "pointer"
+                    }}
+                    onClick={() => openViewer(0)}
+                    title="Click to view file"
+                  >
+                    <span style={{...styles.pdfBadgeText, color: isPdf ? "#ef4444" : "#3b82f6"}}>
+                      {isPdf ? "PDF" : "IMG"}
+                    </span>
+                  </div>
+                  <div 
+                    style={{ ...styles.fileMeta, cursor: "pointer" }} 
+                    onClick={() => openViewer(0)}
+                    title="Click to view file"
+                  >
+                    <p style={styles.fileName}>{displayTitle}</p>
+                    <p style={styles.fileSize}>{formatFileSize(totalSize)}</p>
+                  </div>
+                  {uploadStatus !== "uploading" && (
+                    <button
+                      type="button"
+                      onClick={handleReset}
+                      style={styles.removeButton}
+                      title="Remove selection"
+                    >
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                      </svg>
+                    </button>
+                  )}
+                </div>
+
+                {/* Grid of image thumbnails if uploading images */}
+                {!isPdf && (
+                  <div style={styles.thumbnailGrid}>
+                    {files.map((file, index) => (
+                      <div
+                        key={index}
+                        draggable={uploadStatus !== "uploading"}
+                        onDragStart={(e) => handleDragStart(e, index)}
+                        onDragOver={(e) => e.preventDefault()}
+                        onDragEnter={(e) => handleDragEnter(e, index)}
+                        onDragEnd={handleDragEnd}
+                        onClick={() => openViewer(index)}
+                        style={styles.thumbnailWrapper}
+                        title="Drag to reorder, click to view"
+                      >
+                        <img
+                          src={previewUrls[index]}
+                          alt={`page-${index + 1}`}
+                          draggable={false}
+                          style={styles.thumbnailImage}
+                        />
+                        <div style={styles.thumbnailIndex}>{index + 1}</div>
+                        {uploadStatus !== "uploading" && (
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              removeFileAtIndex(index);
+                            }}
+                            style={styles.thumbnailDelete}
+                            title="Remove image"
+                          >
+                            &times;
+                          </button>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {/* Progress bar for upload */}
+                {uploadStatus === "uploading" && (
+                  <div style={styles.progressContainer}>
+                    <div style={styles.progressBarContainer}>
+                      <div style={styles.progressBar}></div>
+                    </div>
+                    <p style={styles.progressText}>Processing with AI, please wait...</p>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* Error Message */}
+            {uploadStatus === "error" && errorMessage && (
+              <div style={styles.errorAlert}>
                 <svg
-                  width="48"
-                  height="48"
+                  width="20"
+                  height="20"
                   viewBox="0 0 24 24"
                   fill="none"
-                  stroke="var(--accent)"
+                  stroke="#ef4444"
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
+                  style={{ marginRight: 8, flexShrink: 0 }}
                 >
-                  <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
-                  <polyline points="14 2 14 8 20 8" />
-                  <path d="M9 15h1.5a1.5 1.5 0 0 0 0-3H9v4Z" />
-                  <path d="M12 12v4" />
-                  <path d="M12 12h2" />
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" y1="8" x2="12" y2="12"></line>
+                  <line x1="12" y1="16" x2="12.01" y2="16"></line>
                 </svg>
+                <span>{errorMessage}</span>
               </div>
-              <p style={styles.dropText}>
-                Drag & drop your PDF or Images here, or <span style={styles.browseText}>browse</span>
-              </p>
-              <p style={styles.limitText}>Maximum size: 20 MB</p>
-            </div>
-          )}
+            )}
 
-          {/* Selected File(s) Details */}
-          {files.length > 0 && (
-            <div style={styles.fileDetailsCard}>
-              <div style={styles.fileDetailsRow}>
-                <div 
-                  style={{
-                    ...styles.pdfBadge, 
-                    backgroundColor: isPdf ? "rgba(239, 68, 68, 0.1)" : "rgba(59, 130, 246, 0.1)",
-                    borderColor: isPdf ? "rgba(239, 68, 68, 0.2)" : "rgba(59, 130, 246, 0.2)",
-                    cursor: "pointer"
-                  }}
-                  onClick={() => openViewer(0)}
-                  title="Click to view file"
+            {/* Success Message */}
+            {uploadStatus === "success" && (
+              <div style={styles.successAlert}>
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#10b981"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  style={{ marginRight: 8, flexShrink: 0 }}
                 >
-                  <span style={{...styles.pdfBadgeText, color: isPdf ? "#ef4444" : "#3b82f6"}}>
-                    {isPdf ? "PDF" : "IMG"}
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+                <div>
+                  <strong style={{ display: "block" }}>Parsing Successful!</strong>
+                  <span style={{ fontSize: "13px" }}>
+                    Response logged in browser console. ID: {responseData?.examPaperId}
                   </span>
                 </div>
-                <div 
-                  style={{ ...styles.fileMeta, cursor: "pointer" }} 
-                  onClick={() => openViewer(0)}
-                  title="Click to view file"
-                >
-                  <p style={styles.fileName}>{displayTitle}</p>
-                  <p style={styles.fileSize}>{formatFileSize(totalSize)}</p>
-                </div>
-                {uploadStatus !== "uploading" && (
-                  <button
-                    type="button"
-                    onClick={handleReset}
-                    style={styles.removeButton}
-                    title="Remove selection"
-                  >
-                    <svg
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <line x1="18" y1="6" x2="6" y2="18"></line>
-                      <line x1="6" y1="6" x2="18" y2="18"></line>
-                    </svg>
-                  </button>
-                )}
               </div>
-
-              {/* Grid of image thumbnails if uploading images */}
-              {!isPdf && (
-                <div style={styles.thumbnailGrid}>
-                  {files.map((file, index) => (
-                    <div
-                      key={index}
-                      draggable={uploadStatus !== "uploading"}
-                      onDragStart={(e) => handleDragStart(e, index)}
-                      onDragOver={(e) => e.preventDefault()}
-                      onDragEnter={(e) => handleDragEnter(e, index)}
-                      onDragEnd={handleDragEnd}
-                      onClick={() => openViewer(index)}
-                      style={styles.thumbnailWrapper}
-                      title="Drag to reorder, click to view"
-                    >
-                      <img
-                        src={previewUrls[index]}
-                        alt={`page-${index + 1}`}
-                        draggable={false}
-                        style={styles.thumbnailImage}
-                      />
-                      <div style={styles.thumbnailIndex}>{index + 1}</div>
-                      {uploadStatus !== "uploading" && (
-                        <button
-                          type="button"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            removeFileAtIndex(index);
-                          }}
-                          style={styles.thumbnailDelete}
-                          title="Remove image"
-                        >
-                          &times;
-                        </button>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              )}
-
-              {/* Progress bar for upload */}
-              {uploadStatus === "uploading" && (
-                <div style={styles.progressContainer}>
-                  <div style={styles.progressBarContainer}>
-                    <div style={styles.progressBar}></div>
-                  </div>
-                  <p style={styles.progressText}>Processing with AI, please wait...</p>
-                </div>
-              )}
-            </div>
-          )}
-
-          {/* Error Message */}
-          {uploadStatus === "error" && errorMessage && (
-            <div style={styles.errorAlert}>
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#ef4444"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                style={{ marginRight: 8, flexShrink: 0 }}
-              >
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="12" y1="8" x2="12" y2="12"></line>
-                <line x1="12" y1="16" x2="12.01" y2="16"></line>
-              </svg>
-              <span>{errorMessage}</span>
-            </div>
-          )}
-
-          {/* Success Message */}
-          {uploadStatus === "success" && (
-            <div style={styles.successAlert}>
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#10b981"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                style={{ marginRight: 8, flexShrink: 0 }}
-              >
-                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                <polyline points="22 4 12 14.01 9 11.01"></polyline>
-              </svg>
-              <div>
-                <strong style={{ display: "block" }}>Parsing Successful!</strong>
-                <span style={{ fontSize: "13px" }}>
-                  Response logged in browser console. ID: {responseData?.examPaperId}
-                </span>
-              </div>
-            </div>
-          )}
-
-          {/* Action Buttons */}
-          <div style={styles.actionRow}>
-            {files.length > 0 && uploadStatus !== "success" && (
-              <button
-                type="submit"
-                disabled={uploadStatus === "uploading"}
-                style={{
-                  ...styles.submitButton,
-                  backgroundColor: uploadStatus === "uploading" ? "var(--border)" : "var(--accent)",
-                  cursor: uploadStatus === "uploading" ? "not-allowed" : "pointer",
-                }}
-              >
-                {uploadStatus === "uploading" ? "Parsing..." : "Upload & Parse Paper"}
-              </button>
             )}
 
-            {uploadStatus === "success" && (
-              <button
-                type="button"
-                onClick={handleReset}
-                style={{
-                  ...styles.submitButton,
-                  backgroundColor: "var(--accent)",
-                }}
-              >
-                Upload Another File
-              </button>
+            {/* Action Buttons */}
+            <div style={styles.actionRow}>
+              {files.length > 0 && uploadStatus !== "success" && (
+                <button
+                  type="submit"
+                  disabled={uploadStatus === "uploading"}
+                  style={{
+                    ...styles.submitButton,
+                    backgroundColor: uploadStatus === "uploading" ? "var(--border)" : "var(--accent)",
+                    cursor: uploadStatus === "uploading" ? "not-allowed" : "pointer",
+                  }}
+                >
+                  {uploadStatus === "uploading" ? "Parsing..." : "Upload & Parse Paper"}
+                </button>
+              )}
+
+              {uploadStatus === "success" && (
+                <button
+                  type="button"
+                  onClick={handleReset}
+                  style={{
+                    ...styles.submitButton,
+                    backgroundColor: "var(--accent)",
+                  }}
+                >
+                  Upload Another File
+                </button>
+              )}
+            </div>
+          </form>
+        ) : (
+          <div style={styles.selectContainer}>
+            {isLoadingPapers ? (
+              <div style={styles.infoMessage}>Loading previously uploaded papers...</div>
+            ) : loadPapersError ? (
+              <div style={styles.errorAlert}>
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#ef4444"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  style={{ marginRight: 8, flexShrink: 0 }}
+                >
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" y1="8" x2="12" y2="12"></line>
+                  <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                </svg>
+                <span>{loadPapersError}</span>
+              </div>
+            ) : existingPapers.length === 0 ? (
+              <div style={styles.infoMessage}>No previously uploaded question papers found.</div>
+            ) : (
+              <div style={styles.papersList}>
+                {existingPapers.map((paper) => {
+                  const meta = paper.parsed_data?.paperMetadata || {};
+                  const sectionsCount = paper.parsed_data?.sections?.length || 0;
+                  const dateStr = new Date(paper.created_at).toLocaleDateString(undefined, {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                  });
+                  return (
+                    <div key={paper.id} style={styles.paperItem}>
+                      <div style={styles.paperDetails}>
+                        <div style={styles.paperHeader}>
+                          <span style={styles.paperName} title={paper.pdf_filename}>
+                            📄 {paper.pdf_filename}
+                          </span>
+                          <span style={styles.paperDate}>{dateStr}</span>
+                        </div>
+                        <div style={styles.paperMetaRow}>
+                          {meta.title && <span style={styles.metaBadge}>{meta.title}</span>}
+                          {meta.subject && <span style={styles.metaBadge}>Subject: {meta.subject}</span>}
+                          {meta.totalMarks && <span style={styles.metaBadge}>{meta.totalMarks} Marks</span>}
+                          {sectionsCount > 0 && <span style={styles.metaBadge}>{sectionsCount} Sections</span>}
+                        </div>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => handleSelectPaper(paper)}
+                        style={styles.selectPaperBtn}
+                      >
+                        Select & Review
+                      </button>
+                    </div>
+                  );
+                })}
+              </div>
             )}
           </div>
-        </form>
+        )}
       </div>
 
       {/* Fullscreen View List Screen Modal */}
@@ -946,6 +1100,120 @@ const styles = {
     backgroundColor: "rgba(255, 255, 255, 0.15)",
     color: "#fff",
     border: "1px solid rgba(255, 255, 255, 0.3)",
+  },
+  tabContainer: {
+    display: "flex",
+    gap: "10px",
+    marginBottom: "24px",
+    background: "rgba(255, 255, 255, 0.03)",
+    padding: "6px",
+    borderRadius: "10px",
+    border: "1px solid var(--border)",
+  },
+  tabButton: {
+    flex: 1,
+    padding: "10px 16px",
+    borderRadius: "8px",
+    border: "none",
+    fontSize: "14px",
+    fontWeight: "600",
+    cursor: "pointer",
+    transition: "all 0.2s ease",
+  },
+  tabActive: {
+    background: "var(--accent)",
+    color: "#fff",
+    boxShadow: "0 2px 8px rgba(139, 92, 246, 0.4)",
+  },
+  tabInactive: {
+    background: "transparent",
+    color: "var(--text)",
+  },
+  selectContainer: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "16px",
+  },
+  infoMessage: {
+    textAlign: "center",
+    padding: "30px 20px",
+    color: "var(--text)",
+    fontSize: "14px",
+    fontStyle: "italic",
+    border: "1px dashed var(--border)",
+    borderRadius: "10px",
+  },
+  papersList: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "12px",
+    maxHeight: "400px",
+    overflowY: "auto",
+    paddingRight: "4px",
+  },
+  paperItem: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: "14px 16px",
+    borderRadius: "10px",
+    border: "1px solid var(--border)",
+    background: "rgba(255, 255, 255, 0.02)",
+    gap: "16px",
+    transition: "all 0.2s ease",
+  },
+  paperDetails: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "8px",
+    flex: 1,
+    minWidth: 0,
+  },
+  paperHeader: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "baseline",
+    gap: "10px",
+  },
+  paperName: {
+    fontSize: "14px",
+    fontWeight: "600",
+    color: "var(--text-h)",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
+  },
+  paperDate: {
+    fontSize: "11px",
+    color: "var(--text)",
+    flexShrink: 0,
+  },
+  paperMetaRow: {
+    display: "flex",
+    flexWrap: "wrap",
+    gap: "6px",
+  },
+  metaBadge: {
+    fontSize: "11px",
+    padding: "2px 8px",
+    borderRadius: "6px",
+    background: "var(--code-bg)",
+    color: "var(--text)",
+    border: "1px solid var(--border)",
+  },
+  selectPaperBtn: {
+    padding: "8px 14px",
+    borderRadius: "6px",
+    border: "none",
+    background: "var(--accent-bg)",
+    color: "var(--accent)",
+    border: "1px solid var(--accent-border)",
+    fontSize: "13px",
+    fontWeight: "600",
+    cursor: "pointer",
+    transition: "all 0.15s ease",
+    whiteSpace: "nowrap",
+    alignSelf: "center",
   },
 };
 

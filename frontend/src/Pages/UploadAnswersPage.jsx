@@ -123,14 +123,23 @@ function UploadAnswersPage() {
         body: formData,
       });
 
-      const data = await response.json();
+      let data = null;
+      const contentType = response.headers.get("content-type");
+      if (contentType && contentType.includes("application/json")) {
+        try {
+          data = await response.json();
+        } catch (jsonErr) {
+          console.error("Failed to parse JSON response:", jsonErr);
+        }
+      }
 
-      if (response.ok && data.success) {
+      if (response.ok && data && data.success) {
         setUploadStatus("success");
         setResponseData(data);
       } else {
         setUploadStatus("error");
-        setErrorMessage(data.error || `Server responded with status ${response.status}`);
+        const errMsg = (data && data.error) || (data && data.message) || `Server responded with status ${response.status}`;
+        setErrorMessage(errMsg);
       }
     } catch (error) {
       console.error("Network error during answer evaluation:", error);

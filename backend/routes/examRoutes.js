@@ -15,6 +15,9 @@ const upload = multer({
 // POST /api/exams/upload-paper
 router.post("/upload-paper", upload.array("files",15), validateFileType, examController.uploadPaper);
 
+// GET /api/exams/list
+router.get("/list", examController.listPapers);
+
 // POST /api/exams/generate-rubric
 router.post("/generate-rubric", examController.generateRubric);
 
