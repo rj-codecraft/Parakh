@@ -129,17 +129,28 @@ function LandingPage() {
         key={index}
         style={styles.contributorCard}
       >
-        <img
-          src={`https://github.com/${person.github}.png`}
-          alt={person.name}
-          style={styles.avatar}
-        />
+       <a
+  href={`https://github.com/${person.github}`}
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <img
+    src={`https://github.com/${person.github}.png`}
+    alt={person.name}
+    style={styles.avatar}
+  />
+</a>
 
         <h3>{person.name}</h3>
 
-        <p style={styles.github}>
-          @{person.github}
-        </p>
+        <a
+  href={`https://github.com/${person.github}`}
+  target="_blank"
+  rel="noopener noreferrer"
+  style={styles.github}
+>
+  @{person.github}
+</a>
 
         <p style={styles.role}>
           {person.role}
@@ -354,6 +365,8 @@ github: {
   color: "#8b5cf6",
   fontSize: "14px",
   marginBottom: "12px",
+  textDecoration: "none",
+  display: "inline-block",
 },
 
 role: {
