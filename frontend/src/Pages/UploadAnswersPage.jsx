@@ -33,7 +33,7 @@ const BATCH_COOLDOWN_MS = 5000; // 5s gap between sheets to respect Gemini RPM l
 function UploadAnswersPage() {
   const location = useLocation();
   const navigate = useNavigate();
-  const { examPaperId, filename } = location.state || {};
+  const { examPaperId, filename, totalMarks } = location.state || {};
 
   // Each entry in `sheets` is a self‑contained upload card
   const [sheets, setSheets] = useState(() => [createBlankSheet()]);
@@ -215,6 +215,19 @@ function UploadAnswersPage() {
     }
 
     setIsBulkUploading(false);
+  };
+
+  const navigateToResults = () => {
+    const evaluations = sheets
+      .filter((s) => s.uploadStatus === "success" && s.responseData)
+      .map((s) => ({
+        id: s.id,
+        studentName: s.studentName || s.responseData?.evaluationData?.studentMetadata?.name || "Unknown Student",
+        filename: s.files[0]?.name || "answers.pdf",
+        evaluationId: s.responseData.evaluationId,
+        evaluationData: s.responseData.evaluationData,
+      }));
+    navigate("/evaluation/results", { state: { evaluations, totalMarks } });
   };
 
   // ── Derived values ────────────────────────────────────────────────────────
@@ -494,9 +507,36 @@ function UploadAnswersPage() {
 
         {/* ── Bulk progress summary (after completion) ────────────── */}
         {!isBulkUploading && bulkProgress.total > 0 && (
-          <div style={styles.bulkSummary}>
-            <span style={styles.bulkSummaryText}>
-              Batch complete — {bulkProgress.successCount} of {bulkProgress.total} sheets evaluated successfully
+          <div
+            style={{
+              ...styles.bulkSummary,
+              backgroundColor: bulkProgress.successCount === 0 
+                ? "rgba(239, 68, 68, 0.08)" 
+                : bulkProgress.successCount < bulkProgress.total 
+                  ? "rgba(245, 158, 11, 0.08)" 
+                  : "rgba(16, 185, 129, 0.08)",
+              borderColor: bulkProgress.successCount === 0 
+                ? "rgba(239, 68, 68, 0.2)" 
+                : bulkProgress.successCount < bulkProgress.total 
+                  ? "rgba(245, 158, 11, 0.2)" 
+                  : "rgba(16, 185, 129, 0.2)",
+            }}
+          >
+            <span
+              style={{
+                ...styles.bulkSummaryText,
+                color: bulkProgress.successCount === 0 
+                  ? "#ef4444" 
+                  : bulkProgress.successCount < bulkProgress.total 
+                    ? "#f59e0b" 
+                    : "#10b981",
+              }}
+            >
+              {bulkProgress.successCount === bulkProgress.total
+                ? `Batch complete — All ${bulkProgress.total} sheets evaluated successfully!`
+                : bulkProgress.successCount === 0
+                  ? `Batch complete — Evaluation failed for all ${bulkProgress.total} sheets.`
+                  : `Batch complete — ${bulkProgress.successCount} of ${bulkProgress.total} sheets evaluated successfully, ${bulkProgress.total - bulkProgress.successCount} failed.`}
             </span>
           </div>
         )}
@@ -511,6 +551,22 @@ function UploadAnswersPage() {
           >
             Back to Home
           </button>
+
+          {sheets.some((s) => s.uploadStatus === "success") && (
+            <button
+              type="button"
+              onClick={navigateToResults}
+              disabled={globalDisabled}
+              style={{
+                ...styles.submitAllButton,
+                backgroundColor: globalDisabled ? "var(--border)" : "#10b981",
+                cursor: globalDisabled ? "not-allowed" : "pointer",
+                boxShadow: "0 4px 6px -1px rgba(16, 185, 129, 0.2), 0 2px 4px -1px rgba(16, 185, 129, 0.1)",
+              }}
+            >
+              View Results →
+            </button>
+          )}
 
           <button
             type="button"

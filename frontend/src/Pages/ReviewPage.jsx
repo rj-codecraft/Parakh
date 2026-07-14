@@ -157,7 +157,11 @@ function ReviewPage() {
 
       if (response.ok && data && data.success) {
         navigate("/evaluation/upload", {
-          state: { examPaperId: data.examPaperId, filename },
+          state: {
+            examPaperId: data.examPaperId,
+            filename,
+            totalMarks: paperData.paperMetadata?.totalMarks || null,
+          },
         });
       } else {
         setSubmitStatus("error");
