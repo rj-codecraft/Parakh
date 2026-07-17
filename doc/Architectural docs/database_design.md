@@ -6,14 +6,26 @@ This document details the database schema and layout configured inside **Supabas
 
 ## 🧬 Entity Relationship Diagram
 
-The PostgreSQL database maintains a 1-to-many relationship between the exam paper templates and student evaluations.
+The PostgreSQL database maintains a relationship where teachers/users own their uploaded exam paper templates, and each template has multiple student evaluations.
 
 ```mermaid
 erDiagram
+    USERS ||--o{ EXAM_PAPERS : uploads
     EXAM_PAPERS ||--o{ EVALUATIONS : has
     
+    USERS {
+        uuid id PK
+        text email UK
+        text password_hash
+        text name
+        text institution
+        text role
+        timestamptz created_at
+    }
+
     EXAM_PAPERS {
         uuid id PK
+        uuid user_id FK
         text pdf_filename
         jsonb parsed_data
         timestamptz created_at
@@ -38,19 +50,35 @@ erDiagram
 
 ## 🗂️ Table Specifications
 
-### 1. Table: `exam_papers`
-This table stores the question paper structures, questions, marks distribution, and grading rubrics generated during ingestion.
+### 1. Table: `users`
+This table stores details of registered teachers and admins for system access and token generation.
+
+| Field Name | PostgreSQL Type | Constraints | Description |
+| :--- | :--- | :--- | :--- |
+| `id` | `UUID` | `PRIMARY KEY`, `DEFAULT gen_random_uuid()` | Unique identifier for the user. |
+| `email` | `TEXT` | `UNIQUE`, `NOT NULL` | The unique login email address of the teacher/user. |
+| `password_hash` | `TEXT` | `NOT NULL` | The salted bcrypt hash of the user's password. |
+| `name` | `TEXT` | `NOT NULL` | The full name of the teacher/user. |
+| `institution` | `TEXT` | `NOT NULL` | The school/institution affiliation of the user. |
+| `role` | `TEXT` | `NOT NULL`, `DEFAULT 'Teacher'` | User authorization role (e.g., `'Teacher'`). |
+| `created_at` | `TIMESTAMPTZ` | `DEFAULT now()` | Timestamp when the user registered. |
+
+---
+
+### 2. Table: `exam_papers`
+This table stores the question paper structures, questions, marks distribution, and grading rubrics generated during ingestion, linked to the uploading teacher.
 
 | Field Name | PostgreSQL Type | Constraints | Description |
 | :--- | :--- | :--- | :--- |
 | `id` | `UUID` | `PRIMARY KEY`, `DEFAULT gen_random_uuid()` | Unique identifier for the exam paper. |
+| `user_id` | `UUID` | `FOREIGN KEY` references `users(id)` `ON DELETE CASCADE` | Link to the teacher who uploaded the paper. |
 | `pdf_filename` | `TEXT` | `NOT NULL` | The original filename of the uploaded question paper PDF. |
 | `parsed_data` | `JSONB` | `NOT NULL` | The complete structured JSON containing exam metadata, sections, questions list, marks, and rubrics (matches [question_paper_schema.md](./question_paper_schema.md)). |
 | `created_at` | `TIMESTAMPTZ` | `DEFAULT now()` | Timestamp when the question paper was saved/compiled. |
 
 ---
 
-### 2. Table: `evaluations`
+### 3. Table: `evaluations`
 This table stores the results of individual student answer sheet evaluations.
 
 | Field Name | PostgreSQL Type | Constraints | Description |
@@ -87,22 +115,23 @@ CREATE INDEX idx_exam_papers_parsed_data_gin ON public.exam_papers USING gin (pa
 
 ## 🔒 Security Configuration (Row Level Security)
 
-By default, RLS is disabled in [schema.sql](./schema.sql) for ease of local development setup:
+By default, RLS is enabled in [schema.sql](./schema.sql) to protect user and exam details from unauthorized access:
 ```sql
-ALTER TABLE public.exam_papers DISABLE ROW LEVEL SECURITY;
-ALTER TABLE public.evaluations DISABLE ROW LEVEL SECURITY;
-```
-
-For staging and production environments, enable RLS to ensure teachers can only access their own exams:
-```sql
--- Enable RLS
+ALTER TABLE public.users ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.exam_papers ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.evaluations ENABLE ROW LEVEL SECURITY;
-
--- Example policy: Only authenticated teachers can select/insert records
-CREATE POLICY "Enable read access for authenticated users" 
-ON public.exam_papers 
-FOR SELECT 
-TO authenticated 
-USING (true);
 ```
+
+### Access Policies
+
+Below are typical staging and production policies applied on top of these tables to guarantee data isolation between teachers:
+
+1. **`users` Table Policies:**
+   *   Only authenticated users can read/modify their own profiles.
+   
+2. **`exam_papers` Table Policies:**
+   *   **Insert:** Any authenticated user with a `Teacher` role can insert.
+   *   **Select/Update/Delete:** An authenticated user can only view or modify records where `user_id = auth.uid()`.
+
+3. **`evaluations` Table Policies:**
+   *   **Select/Insert/Delete:** An authenticated user can only view, create, or delete evaluations linked to `exam_papers` they own (`exam_papers.user_id = auth.uid()`).
