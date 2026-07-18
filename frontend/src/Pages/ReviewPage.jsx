@@ -66,6 +66,8 @@ function ReviewPage() {
   const [errorMessage, setErrorMessage] = useState("");
   const [instrLang, setInstrLang] = useState("en");
   const [questionPaperId, setQuestionPaperId] = useState(null);
+  const [isStatusExpanded, setIsStatusExpanded] = useState(true);
+  const [isStatusVisible, setIsStatusVisible] = useState(true);
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(`section-${sectionId}`);
@@ -258,77 +260,127 @@ function ReviewPage() {
         </div>
       )}
 
+      {!isStatusVisible && status && (
+        <div style={{ maxWidth: "1000px", margin: "0 auto 16px", display: "flex", justifyContent: "flex-end" }}>
+          <button 
+            onClick={() => setIsStatusVisible(true)}
+            style={styles.statusToggleBtn}
+          >
+            Show Parsing Status Bar 👁️
+          </button>
+        </div>
+      )}
+
       {/* ── Parsing Status Banner ───────────────────────────────────── */}
-      {status && (
+      {isStatusVisible && status && (
         <div style={styles.statusBanner} id="status-banner">
-          <div style={styles.statusRow}>
-            <div style={styles.statusItem}>
-              <span style={styles.statusLabel}>Status</span>
+          <div style={styles.statusHeader(isStatusExpanded)}>
+            <div style={{ display: "flex", alignItems: "center", gap: "12px", flexWrap: "wrap" }}>
+              <span style={{ fontWeight: 600, color: "#fff", fontSize: "13px", textTransform: "uppercase", letterSpacing: "0.5px" }}>Parsing Status:</span>
               <span style={{
-                display: "inline-flex", alignItems: "center", gap: "6px",
-                color: status.success ? "#34d399" : "#f87171", fontWeight: 600, fontSize: "14px"
+                display: "inline-flex", alignItems: "center", gap: "4px",
+                color: status.success ? "#34d399" : "#f87171", fontWeight: 600, fontSize: "13px"
               }}>
                 {status.success ? "✓ Parsed" : "✕ Failed"}
               </span>
+              <span style={{ color: "#334155" }}>|</span>
+              <span style={{ fontSize: "13px", color: "#cbd5e1" }}>
+                Clarity: <strong style={{ color: "#38bdf8" }}>{(status.paperClarity || "unknown").replace("_", " ")}</strong>
+              </span>
+              <span style={{ color: "#334155" }}>|</span>
+              <span style={{ fontSize: "13px", color: getConfidenceColor(status.confidence || 0), fontWeight: 600 }}>
+                Confidence: {((status.confidence || 0) * 100).toFixed(0)}%
+              </span>
             </div>
-
-            <div style={styles.statusItem}>
-              <span style={styles.statusLabel}>Clarity</span>
-              {getClarityBadge(status.paperClarity)}
+            <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+              <button 
+                onClick={() => setIsStatusExpanded(!isStatusExpanded)}
+                style={styles.statusToggleBtn}
+              >
+                {isStatusExpanded ? "Hide Details ▲" : "Show Details ▼"}
+              </button>
+              <button 
+                onClick={() => setIsStatusVisible(false)}
+                style={styles.statusCloseBtn}
+                title="Dismiss Status Bar"
+              >
+                ✕
+              </button>
             </div>
-
-            <div style={styles.statusItem}>
-              <span style={styles.statusLabel}>Confidence</span>
-              <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                <div style={styles.confidenceBarTrack}>
-                  <div style={{
-                    ...styles.confidenceBarFill,
-                    width: `${(status.confidence || 0) * 100}%`,
-                    background: getConfidenceColor(status.confidence || 0),
-                  }} />
-                </div>
-                <span style={{ color: getConfidenceColor(status.confidence || 0), fontWeight: 700, fontSize: "13px" }}>
-                  {((status.confidence || 0) * 100).toFixed(0)}%
-                </span>
-              </div>
-            </div>
-
-            {hasSections && (
-              <div style={styles.jumpItem}>
-                <span style={styles.statusLabel}>Jump to Section</span>
-                <div style={styles.jumpButtons}>
-                  {paperData.sections.map((section, sIdx) => {
-                    const sId = section.sectionId || `${sIdx + 1}`;
-                    return (
-                      <button
-                        key={sId}
-                        onClick={() => scrollToSection(section.sectionId || sIdx)}
-                        style={styles.jumpBtn}
-                        className="jump-btn-hover"
-                      >
-                        {sId}
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-            )}
           </div>
 
-          {/* Errors & Warnings */}
-          {status.errors && status.errors.length > 0 && (
-            <div style={{ marginTop: "12px" }}>
-              {status.errors.map((e, i) => (
-                <div key={i} style={styles.statusError}>⚠ {e}</div>
-              ))}
-            </div>
-          )}
-          {status.warnings && status.warnings.length > 0 && (
-            <div style={{ marginTop: "8px" }}>
-              {status.warnings.map((w, i) => (
-                <div key={i} style={styles.statusWarning}>⚡ {w}</div>
-              ))}
-            </div>
+          {isStatusExpanded && (
+            <>
+              <div style={styles.statusRow}>
+                <div style={styles.statusItem}>
+                  <span style={styles.statusLabel}>Status</span>
+                  <span style={{
+                    display: "inline-flex", alignItems: "center", gap: "6px",
+                    color: status.success ? "#34d399" : "#f87171", fontWeight: 600, fontSize: "14px"
+                  }}>
+                    {status.success ? "✓ Parsed" : "✕ Failed"}
+                  </span>
+                </div>
+
+                <div style={styles.statusItem}>
+                  <span style={styles.statusLabel}>Clarity</span>
+                  {getClarityBadge(status.paperClarity)}
+                </div>
+
+                <div style={styles.statusItem}>
+                  <span style={styles.statusLabel}>Confidence</span>
+                  <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                    <div style={styles.confidenceBarTrack}>
+                      <div style={{
+                        ...styles.confidenceBarFill,
+                        width: `${(status.confidence || 0) * 100}%`,
+                        background: getConfidenceColor(status.confidence || 0),
+                      }} />
+                    </div>
+                    <span style={{ color: getConfidenceColor(status.confidence || 0), fontWeight: 700, fontSize: "13px" }}>
+                      {((status.confidence || 0) * 100).toFixed(0)}%
+                    </span>
+                  </div>
+                </div>
+
+                {hasSections && (
+                  <div style={styles.jumpItem}>
+                    <span style={styles.statusLabel}>Jump to Section</span>
+                    <div style={styles.jumpButtons}>
+                      {paperData.sections.map((section, sIdx) => {
+                        const sId = section.sectionId || `${sIdx + 1}`;
+                        return (
+                          <button
+                            key={sId}
+                            onClick={() => scrollToSection(section.sectionId || sIdx)}
+                            style={styles.jumpBtn}
+                            className="jump-btn-hover"
+                          >
+                            {sId}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Errors & Warnings */}
+              {status.errors && status.errors.length > 0 && (
+                <div style={{ marginTop: "12px" }}>
+                  {status.errors.map((e, i) => (
+                    <div key={i} style={styles.statusError}>⚠ {e}</div>
+                  ))}
+                </div>
+              )}
+              {status.warnings && status.warnings.length > 0 && (
+                <div style={{ marginTop: "8px" }}>
+                  {status.warnings.map((w, i) => (
+                    <div key={i} style={styles.statusWarning}>⚡ {w}</div>
+                  ))}
+                </div>
+              )}
+            </>
           )}
         </div>
       )}
@@ -641,6 +693,38 @@ const styles = {
     fontWeight: "700",
     cursor: "pointer",
     transition: "all 0.2s ease-in-out",
+  },
+  statusHeader: (isExpanded) => ({
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    width: "100%",
+    borderBottom: isExpanded ? "1px solid #1e293b" : "none",
+    paddingBottom: isExpanded ? "10px" : "0px",
+    marginBottom: isExpanded ? "10px" : "0px",
+  }),
+  statusToggleBtn: {
+    background: "rgba(139, 92, 246, 0.12)",
+    border: "1px solid rgba(139, 92, 246, 0.35)",
+    borderRadius: "8px",
+    color: "#c4b5fd",
+    padding: "6px 14px",
+    fontSize: "12px",
+    fontWeight: "700",
+    cursor: "pointer",
+    transition: "all 0.2s ease-in-out",
+  },
+  statusCloseBtn: {
+    background: "transparent",
+    border: "none",
+    color: "#64748b",
+    fontSize: "14px",
+    cursor: "pointer",
+    padding: "4px",
+    display: "inline-flex",
+    alignItems: "center",
+    justifyContent: "center",
+    transition: "color 0.15s ease, transform 0.15s ease",
   },
 };
 
