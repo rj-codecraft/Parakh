@@ -295,7 +295,11 @@ const finalPaperSchema = {
             properties: {
                 success: { type: Type.BOOLEAN },
                 paperClarity: { type: Type.STRING },
-                confidence: { type: Type.NUMBER },
+                extractedRisks: { type: Type.ARRAY, items: { type: Type.STRING } },
+                confidence: {
+                    type: Type.NUMBER,
+                    description: "Overall document extraction confidence score from 0 to 100, evaluated directly against risks listed in extractionRisks. 100 = Perfect OCR, clear layout, zero layout ambiguities. 80-99 = High quality with minor visual noise or small formatting warnings. 50-79 = Moderate risk (e.g., partial image cutoffs, ambiguous choice pairings). Below 50 = Unclear text, broken layouts, or severe OCR failure. DO NOT default to 95+ if extractionRisks contains structural ambiguity."
+                },
                 errors: { type: Type.ARRAY, items: { type: Type.STRING } },
                 warnings: { type: Type.ARRAY, items: { type: Type.STRING } }
             }

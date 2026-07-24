@@ -23,7 +23,7 @@ export default async function parseQuestionPaper(req, res, next) {
         console.log("Generating response...");
 
         const primaryModel="gemini-2.5-flash"; // Not using 3.5-flash right now because of busy servers and less priority to free tier. 3.1-flash-lite is suited for speed and it is not reading prompt correctly.
-        const fallbackModel="gemini-2.5-flash";
+        const fallbackModel="gemini-2.5-pro";
         
         const maxRetries = 5;
         

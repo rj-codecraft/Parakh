@@ -198,9 +198,13 @@ function ReviewPage() {
   const hasFlatQuestions = paperData.questions && paperData.questions.length > 0;
   const globalChoices = paperData.globalChoices;
 
+  const rawConfidence = status?.confidence ?? 0;
+  const confidenceScore = rawConfidence > 0 && rawConfidence <= 1 ? rawConfidence * 100 : rawConfidence;
+
   const getConfidenceColor = (c) => {
-    if (c >= 0.8) return "#10b981";
-    if (c >= 0.5) return "#f59e0b";
+    const val = c > 0 && c <= 1 ? c * 100 : c;
+    if (val >= 80) return "#10b981";
+    if (val >= 50) return "#f59e0b";
     return "#ef4444";
   };
 
@@ -278,8 +282,8 @@ function ReviewPage() {
                 Clarity: <strong style={{ color: "#38bdf8" }}>{(status.paperClarity || "unknown").replace("_", " ")}</strong>
               </span>
               <span style={{ color: "#334155" }}>|</span>
-              <span style={{ fontSize: "13px", color: getConfidenceColor(status.confidence || 0), fontWeight: 600 }}>
-                Confidence: {((status.confidence || 0) * 100).toFixed(0)}%
+              <span style={{ fontSize: "13px", color: getConfidenceColor(confidenceScore), fontWeight: 600 }}>
+                Confidence: {Math.round(confidenceScore)}%
               </span>
             </div>
             <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
@@ -323,12 +327,12 @@ function ReviewPage() {
                     <div style={styles.confidenceBarTrack}>
                       <div style={{
                         ...styles.confidenceBarFill,
-                        width: `${(status.confidence || 0) * 100}%`,
-                        background: getConfidenceColor(status.confidence || 0),
+                        width: `${Math.min(100, Math.max(0, confidenceScore))}%`,
+                        background: getConfidenceColor(confidenceScore),
                       }} />
                     </div>
-                    <span style={{ color: getConfidenceColor(status.confidence || 0), fontWeight: 700, fontSize: "13px" }}>
-                      {((status.confidence || 0) * 100).toFixed(0)}%
+                    <span style={{ color: getConfidenceColor(confidenceScore), fontWeight: 700, fontSize: "13px" }}>
+                      {Math.round(confidenceScore)}%
                     </span>
                   </div>
                 </div>

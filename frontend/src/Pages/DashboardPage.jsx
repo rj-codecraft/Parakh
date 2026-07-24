@@ -93,10 +93,13 @@ export default function DashboardPage() {
       let avgConfidence = 100;
       if (totalPapers > 0) {
         const sumConfidence = paperList.reduce((sum, p) => {
-          const confidence = p.parsed_data?.parsingStatus?.confidence ?? 1;
+          const val = p.parsed_data?.parsingStatus?.confidence;
+          const parsed = parseFloat(val);
+          const rawConfidence = !isNaN(parsed) ? parsed : 1;
+          const confidence = rawConfidence > 0 && rawConfidence <= 1 ? rawConfidence * 100 : rawConfidence;
           return sum + confidence;
         }, 0);
-        avgConfidence = Math.round((sumConfidence / totalPapers) * 100);
+        avgConfidence = Math.round(sumConfidence / totalPapers);
       }
 
       setStats({
