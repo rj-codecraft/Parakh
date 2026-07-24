@@ -55,7 +55,13 @@ Follow all rules strictly. Return valid JSON only. Never explain anything outsid
 # JSON FIELD DEFINITIONS
 - paperMetadata: General metadata. Use empty strings (or 0 for totalMarks) if unavailable.
 - instructions: Object containing instruction arrays mapped by language keys (en and hi).
-- parsingStatus: Object containing success flag, paperClarity ("clear", "partially_clear", "unclear"), confidence score (0.0 to 1.0), and arrays for errors/warnings.
+- parsingStatus: Object containing:
+  - success: Boolean flag indicating if the document was parsed successfully (true/false).
+  - paperClarity: String indicating OCR quality ("clear", "partially_clear", "unclear").
+  - errors: Array of critical execution error strings.
+  - warnings: Array of non-fatal warnings (e.g., blurry text, unreadable notation).
+  - extractionRisks: Array containing exactly 3 string items identifying potential edge cases or ambiguities where this extraction might be inaccurate (e.g., "Blurry subscript on Q14.b", "Ambiguous layout pairing on Q3 OR Q4").
+  - confidence: Number (0–100) representing overall structural accuracy, mathematically evaluated ONLY based on the severe risks listed in `extractionRisks`.
 - sections: Array containing section objects.
   - sectionId: Must be strictly and uniquely identifying across the entire document. 
       * Prefix Rule: If the exam contains multiple subjects (e.g., Mathematics, Physics, Chemistry), you MUST prefix the section ID with the active subject name.

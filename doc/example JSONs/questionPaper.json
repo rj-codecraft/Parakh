@@ -12,26 +12,29 @@
             ],
             "hi": [
                 "कृपया जाँच कर लें कि इस प्रश्न-पत्र में मुद्रित पृष्ठ 16 हैं।",
-                "प्रश्न-पत्र में दाहिने हाथ की ओर दिए गए कोड नम्बर को छात्र उत्तर-पुस्तिका के मुख पृष्ठ पर लिखें।",
+                "प्रश्न-पत्र में दाहिने हाथ की ओर दिए गए कोड नम्बर को छात्र उत्तर-पुस्तिका के मुख-पृष्ठ पर लिखें।",
                 "कृपया जाँच कर लें कि इस प्रश्न-पत्र में 36 प्रश्न हैं।",
                 "कृपया प्रश्न का उत्तर लिखना शुरू करने से पहले, प्रश्न का क्रमांक अवश्य लिखें।",
                 "इस प्रश्न-पत्र को पढ़ने के लिए 15 मिनट का समय दिया गया है। प्रश्न-पत्र का वितरण पूर्वाह्न में 10.15 बजे किया जाएगा। 10.15 बजे से 10.30 बजे तक छात्र केवल प्रश्न-पत्र को पढ़ेंगे और इस अवधि के दौरान वे उत्तर-पुस्तिका पर कोई उत्तर नहीं लिखेंगे।"
             ]
         },
         "subject": "SCIENCE",
-        "title": "SUMMATIVE ASSESSMENT - II",
+        "title": "SUMMATIVE ASSESSMENT - II SCIENCE",
         "totalMarks": 90
     },
     "parsingStatus": {
-        "confidence": 0.98,
+        "confidence": 95,
         "errors": [],
+        "extractedRisks": [
+            "No structural ambiguities or unclear text identified."
+        ],
         "paperClarity": "clear",
         "success": true,
         "warnings": []
     },
     "sections": [
         {
-            "sectionId": "A",
+            "sectionId": "section_a",
             "questions": [
                 {
                     "type": "Theory",
@@ -73,8 +76,8 @@
                     "type": "Theory",
                     "id": "Q4",
                     "text": {
-                        "en": "The refractive indices of glass and water with respect to air are 3/2 and 4/3 respectively. If speed of light in glass is 2 × 10⁸ m/s, find the speed of light in water.",
-                        "hi": "वायु के सापेक्ष कांच और जल के अपवर्तनांक क्रमशः 3/2 और 4/3 हैं। यदि कांच में प्रकाश की चाल 2×10⁸ m/s है, तो जल में प्रकाश की चाल परिकलित कीजिए।"
+                        "en": "The refractive indices of glass and water with respect to air are 3/2 and 4/3 respectively. If speed of light in glass is 2 × 10^8 m/s, find the speed of light in water.",
+                        "hi": "वायु के सापेक्ष कांच और जल के अपवर्तनांक क्रमशः 3/2 और 4/3 हैं। यदि कांच में प्रकाश की चाल 2×10^8 m/s है, तो जल में प्रकाश की चाल परिकलित कीजिए।"
                     },
                     "marks": "2",
                     "rubric": [],
@@ -109,8 +112,8 @@
                     "type": "Theory",
                     "id": "Q7",
                     "text": {
-                        "en": "The position of eight elements in the Modern Periodic Table is given below where atomic numbers of elements are given in the parenthesis. Period No. 2 Li (3) Be (4) 3 Na (11) Mg (12) 4 K (19) Ca (20) 5 Rb (37) Sr (38)",
-                        "hi": "आधुनिक आवर्त सारणी में आठ तत्वों की स्थितियां नीचे दिए अनुसार हैं। यहाँ तत्वों की परमाणु संख्या कोष्टक में दर्शायी गयी हैं आवर्त संख्या 2 Li (3) Be (4) 3 Na (11) Mg (12) 4 K (19) Ca (20) 5 Rb (37) Sr (38)"
+                        "en": "The position of eight elements in the Modern Periodic Table is given below where atomic numbers of elements are given in the parenthesis. Period No. 2 (Li (3), Be (4)), 3 (Na (11), Mg (12)), 4 (K (19), Ca (20)), 5 (Rb (37), Sr (38))",
+                        "hi": "आधुनिक आवर्त सारणी में आठ तत्वों की स्थितियां नीचे दिए अनुसार हैं। यहाँ तत्वों की परमाणु संख्या कोष्टक में दर्शायी गयी हैं आवर्त संख्या 2 (Li (3), Be (4)), 3 (Na (11), Mg (12)), 4 (K (19), Ca (20)), 5 (Rb (37), Sr (38))"
                     },
                     "marks": "infer from children and choice description",
                     "rubric": [],
@@ -286,12 +289,12 @@
                                 "en": "",
                                 "hi": ""
                             },
-                            "marks": "infer from children and choice description",
+                            "marks": "",
                             "rubric": [],
                             "diagramRequired": false,
                             "attachments": [
                                 {
-                                    "description": "Diagram showing a longitudinal section of a flower with parts labeled: A (stigma), B (style), C (ovary), D (ovule). The stigma (A) is at the top, connected by the style (B) to the ovary (C) at the base. Inside the ovary, the ovule (D) is visible.",
+                                    "description": "Diagram showing parts of a flower/ovary with labels A, B, C, D. A points to stigma, B to style, C to ovary, D to ovule.",
                                     "type": "diagram"
                                 }
                             ],
@@ -372,7 +375,7 @@
                     "type": "Theory",
                     "id": "Q14",
                     "text": {
-                        "en": "\"Two areas of study namely ‘evolution' and 'classification' are interlinked\". Justify this statement.",
+                        "en": "“Two areas of study namely ‘evolution' and 'classification' are interlinked\". Justify this statement.",
                         "hi": "“अध्ययन के दो क्षेत्र- 'विकास' और 'वर्गीकरण' परस्पर जुड़े हैं।\" इस कथन की पुष्टि कीजिए।"
                     },
                     "marks": "3",
@@ -632,12 +635,12 @@
             ],
             "sectionChoices": [],
             "sectionInstructions": {
-                "en": "(i) The question paper comprises two Sections, A and B. You are to attempt both the sections.(ii) All questions are compulsory.(iii) There is no choice in any of the questions.(iv) All questions of Section A and all questions of Section B are to be attempted separately.(v) Question numbers 1 to 3 in Section A are one-mark questions. These are to be answered in one word or in one sentence.(vi) Question numbers 4 to 6 in Section A are two-marks questions. These are to be answered in about 30 words each.(vii) Question numbers 7 to 18 Section A are three-marks questions. These are to be answered in about 50 words each.(viii) Question numbers 19 to 24 in Section A are five-marks questions. These are to be answered in about 70 words each.",
-                "hi": "(i) इस प्रश्न पत्र को दो भागों, भाग अ और भाग ब, में बाँटा गया है। आपको दोनों भागों के प्रश्नों के उत्तर लिखने हैं।(ii) सभी प्रश्न अनिवार्य हैं।(iii) पूरे पश्न पत्र में किसी प्रश्न में कोई चयन प्राप्त नहीं है।(iv) आपको भाग अ और भाग ब के सभी प्रश्नों के उत्तर पृथक् पृथक् भाग के आधार पर लिखने हैं।(υ) भाग अ के प्रश्न संख्या 1 से 3 प्रश्न एक-एक अंक के हैं। इनके उत्तर एक शब्द अथवा एक वाक्य में दें।(vi) भाग अ के प्रश्न संख्या 4 से 6 के प्रश्न दो-दो अंकों के हैं। इनके उत्तर लगभग 30 शब्दों में देने हैं।(vii) भाग अ के प्रश्न संख्या 7 से 18 के प्रश्न तीन-तीन अंकों के हैं। इनके उत्तर लगभग 50 शब्दों में देने हैं।(viii) भाग अ के प्रश्न संख्या 19 से 24 के प्रश्न पाँच-पाँच अंकों के हैं। इनके उत्तर लगभग 70 शब्दों में देने हैं।"
+                "en": "The question paper comprises two Sections, A and B. You are to attempt both the sections. All questions are compulsory. There is no choice in any of the questions. All questions of Section A and all questions of Section B are to be attempted separately. Question numbers 1 to 3 in Section A are one-mark questions. These are to be answered in one word or in one sentence. Question numbers 4 to 6 in Section A are two-marks questions. These are to be answered in about 30 words each. Question numbers 7 to 18 Section A are three-marks questions. These are to be answered in about 50 words each. Question numbers 19 to 24 in Section A are five-marks questions. These are to be answered in about 70 words each.",
+                "hi": "इस प्रश्न पत्र को दो भागों, भाग अ और भाग ब, में बाँटा गया है। आपको दोनों भागों के प्रश्नों के उत्तर लिखने हैं। सभी प्रश्न अनिवार्य हैं। पूरे पश्न पत्र में किसी प्रश्न में कोई चयन प्राप्त नहीं है। आपको भाग अ और भाग ब के सभी प्रश्नों के उत्तर पृथक् पृथक् भाग के आधार पर लिखने हैं। भाग अ के प्रश्न संख्या 1 से 3 प्रश्न एक-एक अंक के हैं। इनके उत्तर एक शब्द अथवा एक वाक्य में दें। भाग अ के प्रश्न संख्या 4 से 6 के प्रश्न दो-दो अंकों के हैं। इनके उत्तर लगभग 30 शब्दों में देने हैं। भाग अ के प्रश्न संख्या 7 से 18 के प्रश्न तीन-तीन अंकों के हैं। इनके उत्तर लगभग 50 शब्दों में देने हैं। भाग अ के प्रश्न संख्या 19 से 24 के प्रश्न पाँच-पाँच अंकों के हैं। इनके उत्तर लगभग 70 शब्दों में देने हैं।"
             }
         },
         {
-            "sectionId": "B",
+            "sectionId": "section_b",
             "questions": [
                 {
                     "type": "MCQ",
@@ -652,28 +655,28 @@
                     "diagramRequired": false,
                     "options": [
                         {
-                            "optionId": "A",
+                            "optionId": "a",
                             "text": {
                                 "en": "Testa, Radicle, Cotyledon",
                                 "hi": "बीजावरण, मूलांकुर, बीजपत्र"
                             }
                         },
                         {
-                            "optionId": "B",
+                            "optionId": "b",
                             "text": {
                                 "en": "Tegmen, Radicle, Micropyle",
                                 "hi": "अन्तःकवच, मूलांकुर, बीजाण्ड द्वार"
                             }
                         },
                         {
-                            "optionId": "C",
+                            "optionId": "c",
                             "text": {
                                 "en": "Cotyledon, Plumule, Testa",
                                 "hi": "बीजपत्र, प्रांकुर, बीजावरण"
                             }
                         },
                         {
-                            "optionId": "D",
+                            "optionId": "d",
                             "text": {
                                 "en": "Radicle, Cotyledon, Plumule",
                                 "hi": "मूलांकुर, बीजपत्र, प्रांकुर"
@@ -694,28 +697,28 @@
                     "diagramRequired": false,
                     "options": [
                         {
-                            "optionId": "A",
+                            "optionId": "a",
                             "text": {
                                 "en": "Carrot and radish",
                                 "hi": "गाजर और मूली"
                             }
                         },
                         {
-                            "optionId": "B",
+                            "optionId": "b",
                             "text": {
                                 "en": "Potato and sweet potato",
                                 "hi": "आलू और शकरकन्दी"
                             }
                         },
                         {
-                            "optionId": "C",
+                            "optionId": "c",
                             "text": {
                                 "en": "Potato and tomato",
                                 "hi": "आलू और टमाटर"
                             }
                         },
                         {
-                            "optionId": "D",
+                            "optionId": "d",
                             "text": {
                                 "en": "Lady finger and potato",
                                 "hi": "भिण्डी और आलू"
@@ -736,34 +739,34 @@
                     "diagramRequired": false,
                     "attachments": [
                         {
-                            "description": "Ray diagram showing light passing through a prism. Angles A, D, i, r, e are marked. Angle A is the prism angle, D is the angle of deviation, i is the angle of incidence, r is the angle of refraction, e is the angle of emergence.",
+                            "description": "Ray diagram showing light passing through a prism. Angles i, r, e, A, D are marked. Angle i is angle of incidence, r is angle of refraction inside prism, e is angle of emergence, A is angle of prism, D is angle of deviation.",
                             "type": "diagram"
                         }
                     ],
                     "options": [
                         {
-                            "optionId": "A",
+                            "optionId": "a",
                             "text": {
-                                "en": "Zi and Ze",
+                                "en": "∠i and ∠e",
                                 "hi": "∠i और ∠e"
                             }
                         },
                         {
-                            "optionId": "B",
+                            "optionId": "b",
                             "text": {
                                 "en": "∠A and ∠D",
                                 "hi": "∠A और ∠D"
                             }
                         },
                         {
-                            "optionId": "C",
+                            "optionId": "c",
                             "text": {
-                                "en": "Zi, Ze and ∠D",
+                                "en": "∠i, ∠e and ∠D",
                                 "hi": "∠i, ∠e और ∠D"
                             }
                         },
                         {
-                            "optionId": "D",
+                            "optionId": "d",
                             "text": {
                                 "en": "∠r, ∠A and ∠D",
                                 "hi": "∠r, ∠A और ∠D"
@@ -784,28 +787,28 @@
                     "diagramRequired": false,
                     "options": [
                         {
-                            "optionId": "A",
+                            "optionId": "a",
                             "text": {
-                                "en": "∠i is more than ∠r, but nearly equal to Ze",
+                                "en": "∠i is more than ∠r, but nearly equal to ∠e",
                                 "hi": "∠i बड़ा है ∠r से, परन्तु ∠e के लगभग बराबर है"
                             }
                         },
                         {
-                            "optionId": "B",
+                            "optionId": "b",
                             "text": {
-                                "en": "∠i is less than ∠r, but nearly equal to Ze",
+                                "en": "∠i is less than ∠r, but nearly equal to ∠e",
                                 "hi": "∠i छोटा है ∠r से, परन्तु ∠e के लगभग बराबर है"
                             }
                         },
                         {
-                            "optionId": "C",
+                            "optionId": "c",
                             "text": {
                                 "en": "∠i is more than ∠e, but nearly equal to ∠r",
                                 "hi": "∠i बड़ा है ∠e से, परन्तु ∠r के लगभग बराबर है"
                             }
                         },
                         {
-                            "optionId": "D",
+                            "optionId": "d",
                             "text": {
                                 "en": "∠i is less than ∠e, but nearly equal to ∠r",
                                 "hi": "∠i छोटा है ∠e से, परन्तु ∠r के लगभग बराबर है"
@@ -826,28 +829,28 @@
                     "diagramRequired": false,
                     "options": [
                         {
-                            "optionId": "A",
+                            "optionId": "a",
                             "text": {
                                 "en": "Laterally inverted and diminished",
                                 "hi": "पार्श्व परिवर्तित और छोटा होता है।"
                             }
                         },
                         {
-                            "optionId": "B",
+                            "optionId": "b",
                             "text": {
                                 "en": "Inverted and diminished",
                                 "hi": "उल्टा और छोटा होता है।"
                             }
                         },
                         {
-                            "optionId": "C",
+                            "optionId": "c",
                             "text": {
                                 "en": "Erect and diminished",
                                 "hi": "सीधा और छोटा होता है।"
                             }
                         },
                         {
-                            "optionId": "D",
+                            "optionId": "d",
                             "text": {
                                 "en": "Erect and highly diminished",
                                 "hi": "सीधा और अत्यधिक छोटा होता है।"
@@ -868,28 +871,28 @@
                     "diagramRequired": false,
                     "options": [
                         {
-                            "optionId": "A",
+                            "optionId": "a",
                             "text": {
                                 "en": "lens slightly towards the screen",
                                 "hi": "लेंस को थोड़ा सा पर्दे की ओर सरकाएंगे।"
                             }
                         },
                         {
-                            "optionId": "B",
+                            "optionId": "b",
                             "text": {
                                 "en": "lens slightly away from the screen",
                                 "hi": "लेंस को थोड़ा सा पर्दे से दूर सरकाएंगे।"
                             }
                         },
                         {
-                            "optionId": "C",
+                            "optionId": "c",
                             "text": {
                                 "en": "lens slightly towards the sun",
                                 "hi": "लेंस को थोड़ा सा सूर्य की दिशा में सरकाएंगे।"
                             }
                         },
                         {
-                            "optionId": "D",
+                            "optionId": "d",
                             "text": {
                                 "en": "lens and screen both towards the sun",
                                 "hi": "लेंस और पर्दे दोनों को सूर्य की ओर सरकाएंगे।"
@@ -910,28 +913,28 @@
                     "diagramRequired": false,
                     "options": [
                         {
-                            "optionId": "A",
+                            "optionId": "a",
                             "text": {
                                 "en": "Castor oil and calcium hydroxide",
                                 "hi": "एरण्ड का तेल और कैल्सियम हाइड्रॉक्साइड"
                             }
                         },
                         {
-                            "optionId": "B",
+                            "optionId": "b",
                             "text": {
                                 "en": "Turpentine oil and sodium hydroxide",
                                 "hi": "तारपीन का तेल और सोडियम हाइड्रॉक्साइड"
                             }
                         },
                         {
-                            "optionId": "C",
+                            "optionId": "c",
                             "text": {
                                 "en": "Castor oil and sodium hydroxide",
                                 "hi": "एरण्ड का तेल और सोडियम हाइड्रॉक्साइड"
                             }
                         },
                         {
-                            "optionId": "D",
+                            "optionId": "d",
                             "text": {
                                 "en": "Mustard oil and calcium hydroxide",
                                 "hi": "सरसों का तेल और कैल्सियम हाइड्रॉक्साइड"
@@ -952,28 +955,28 @@
                     "diagramRequired": false,
                     "options": [
                         {
-                            "optionId": "A",
+                            "optionId": "a",
                             "text": {
                                 "en": "There is no change in the blue litmus paper and the red litmus paper turns white.",
                                 "hi": "नीले लिटमस पत्र में कोई परिवर्तन नहीं होता और लाल लिटमस पत्र सफेद हो जाता है।"
                             }
                         },
                         {
-                            "optionId": "B",
+                            "optionId": "b",
                             "text": {
                                 "en": "There is no change in the red litmus paper and the blue litmus paper turns red.",
                                 "hi": "लाल लिटमस पत्र में कोई परिवर्तन नहीं होता और नीला लिटमस पत्र लाल हो जाता है।"
                             }
                         },
                         {
-                            "optionId": "C",
+                            "optionId": "c",
                             "text": {
                                 "en": "There is no change in the blue litmus paper and the red litmus paper turns blue.",
                                 "hi": "नीले लिटमस पत्र में कोई परिवर्तन नहीं होता और लाल लिटमस पत्र नीला हो जाता है।"
                             }
                         },
                         {
-                            "optionId": "D",
+                            "optionId": "d",
                             "text": {
                                 "en": "No change in colour is observed in both the litmus papers.",
                                 "hi": "दोनों ही लिटमस पत्रों के रंग में कोई परिवर्तन नहीं होता।"
@@ -994,28 +997,28 @@
                     "diagramRequired": false,
                     "options": [
                         {
-                            "optionId": "A",
+                            "optionId": "a",
                             "text": {
                                 "en": "Sodium chloride, calcium chloride",
                                 "hi": "सोडियम क्लोराइड, कैल्सियम क्लोराइड"
                             }
                         },
                         {
-                            "optionId": "B",
+                            "optionId": "b",
                             "text": {
                                 "en": "Potassium chloride, sodium chloride",
                                 "hi": "पोटैशियम क्लोराइड, सोडियम क्लोराइड"
                             }
                         },
                         {
-                            "optionId": "C",
+                            "optionId": "c",
                             "text": {
                                 "en": "Sodium chloride, magnesium chloride",
                                 "hi": "सोडियम क्लोराइड, मैग्नीशियम क्लोराइड"
                             }
                         },
                         {
-                            "optionId": "D",
+                            "optionId": "d",
                             "text": {
                                 "en": "Calcium chloride, magnesium chloride",
                                 "hi": "कैल्सियम क्लोराइड, मैग्नीशियम क्लोराइड"
@@ -1062,8 +1065,8 @@
             ],
             "sectionChoices": [],
             "sectionInstructions": {
-                "en": "(i) The question paper comprises two Sections, A and B. You are to attempt both the sections.(ii) All questions are compulsory.(iii) There is no choice in any of the questions.(iv) All questions of Section A and all questions of Section B are to be attempted separately.(ix) Question numbers 25 to 33 in Section B are multiple choice questions based on practical skills. Each question is a one-mark question. You are to select one most appropriate response out of the four provided to you.(x) Question numbers 34 to 36 in Section B are two-marks questions based on practical skills. These are to be answered in brief.",
-                "hi": "(i) इस प्रश्न पत्र को दो भागों, भाग अ और भाग ब, में बाँटा गया है। आपको दोनों भागों के प्रश्नों के उत्तर लिखने हैं।(ii) सभी प्रश्न अनिवार्य हैं।(iii) पूरे पश्न पत्र में किसी प्रश्न में कोई चयन प्राप्त नहीं है।(iv) आपको भाग अ और भाग ब के सभी प्रश्नों के उत्तर पृथक् पृथक् भाग के आधार पर लिखने हैं।(ix) भाग ब के प्रश्न संख्या 25 से 33 के प्रश्न प्रयोगात्मक कौशल पर आधारित बहुविकल्पी प्रश्न हैं। प्रत्येक प्रश्न एक अंक का है। दिए गए चार विकल्पों में से आपको केवल एक सबसे उपयुक्त विकल्प चुनना है।(x) भाग ब के प्रश्न संख्या 34 से 36 के प्रश्न प्रयोगात्मक कौशल पर आधारित दो-दो अंकों के प्रश्न हैं। इनके उत्तर संक्षिप्त में देने हैं।"
+                "en": "Question numbers 25 to 33 in Section B are multiple choice questions based on practical skills. Each question is a one-mark question. You are to select one most appropriate response out of the four provided to you. Question numbers 34 to 36 in Section B are two-marks questions based on practical skills. These are to be answered in brief.",
+                "hi": "भाग ब के प्रश्न संख्या 25 से 33 के प्रश्न प्रयोगात्मक कौशल पर आधारित बहुविकल्पी प्रश्न हैं। प्रत्येक प्रश्न एक अंक का है। दिए गए चार विकल्पों में से आपको केवल एक सबसे उपयुक्त विकल्प चुनना है। भाग ब के प्रश्न संख्या 34 से 36 के प्रश्न प्रयोगात्मक कौशल पर आधारित दो-दो अंकों के प्रश्न हैं। इनके उत्तर संक्षिप्त में देने हैं।"
             }
         }
     ],
